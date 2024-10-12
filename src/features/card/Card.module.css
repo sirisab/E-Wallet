@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
+
+.card {
+  color: rgb(95, 95, 95);
+  width: 200px;
+  padding: 16px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pink {
+  background-color: rgb(252, 152, 212);
+}
+
+.blue {
+  background-color: rgb(93, 155, 255);
+}
+
+.chip {
+  text-align: left;
+}
+
+.brand {
+  text-align: right;
+}
+
+.cardNumber {
+  text-align: left;
+  font-size: 16px;
+}
+
+.validThru {
+  text-align: left;
+  font-size: 10px;
+}
+
+.name {
+  text-align: left;
+  font-size: 10px;
+}
