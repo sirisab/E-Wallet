@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Card from "../features/card/Card";
+import { Link } from "react-router-dom";
+import AddCardPage from "./AddCardPage";
 
 function Startpage() {
   const [cards, setCards] = useState([
@@ -33,7 +35,9 @@ function Startpage() {
           active={card.active}
         />
       ))}
-      <button>Add new card</button>
+      <Link to="/addcard" cards={cards}>
+        Add new card
+      </Link>
     </>
   );
 }

@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
 
+.cardContainer {
+  display: flex;
+}
 .card {
   color: rgb(95, 95, 95);
   width: 200px;
