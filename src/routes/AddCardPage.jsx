@@ -1,14 +1,14 @@
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Card from "../features/card/Card";
-// import { addCard } from "../features/card/cardSlice";
+import { addCard } from "../features/card/cardSlice";
 
 function AddCardPage(cards) {
   const [cardNumber, setCardNumber] = useState();
   const [validThru, setValidThru] = useState();
   const [name, setName] = useState();
   const [brand, setBrand] = useState();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   let addCard = () => {};
 
@@ -23,7 +23,7 @@ function AddCardPage(cards) {
             name,
             brand,
           };
-          // dispatch(addCard(data));
+          dispatch(addCard(data));
         }}
       >
         <p>
