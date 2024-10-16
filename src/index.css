@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
 }
 
 a {
@@ -24,8 +26,11 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  place-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -34,6 +39,10 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   color: black;
+}
+
+header {
+  background-color: rgb(42, 42, 81);
 }
 
 button {

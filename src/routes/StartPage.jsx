@@ -1,44 +1,38 @@
-import { useState } from "react";
 import Card from "../features/card/Card";
 import { Link } from "react-router-dom";
-import AddCardPage from "./AddCardPage";
+import { useSelector, useDispatch } from "react-redux";
+import { FaTrash } from "react-icons/fa";
+import { deleteCard } from "../features/card/cardSlice";
 
 function Startpage() {
-  const [cards, setCards] = useState([
-    {
-      bgColor: "pink",
-      cardNumber: "4455 6655 3344 2233",
-      validThru: "23/09",
-      name: "SIRI BACKSTRÖM",
-      brand: "Nordea",
-      active: true,
-    },
-    {
-      bgColor: "blue",
-      cardNumber: "4455 6655 3344 2233",
-      validThru: "23/12",
-      name: "ISIS BACKSTRÖM",
-      brand: "Handelsbanken",
-      active: false,
-    },
-  ]);
+  let dispatch = useDispatch();
+  const cards = useSelector((store) => store.cardReducer.cards);
   return (
-    <>
+    <div className="startPage">
       {cards.map((card, i) => (
-        <Card
-          key={i}
-          bgColor={card.bgColor}
-          cardNumber={card.cardNumber}
-          validThru={card.validThru}
-          name={card.name}
-          brand={card.brand}
-          active={card.active}
-        />
+        <div key={i}>
+          <Card
+            bgColor={card.bgColor}
+            cardNumber={card.cardNumber}
+            validThru={card.validThru}
+            name={card.name}
+            brand={card.brand}
+            active={card.active}
+          />
+          <button
+            className="deleteCardBtn"
+            onClick={() => {
+              dispatch(deleteCard(card.id));
+            }}
+          >
+            <FaTrash />
+          </button>
+        </div>
       ))}
       <Link to="/addcard" cards={cards}>
-        Add new card
+        <div className="addCardLink">Add new Card</div>
       </Link>
-    </>
+    </div>
   );
 }
 

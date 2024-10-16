@@ -1,31 +1,21 @@
-// import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Card from "../features/card/Card";
-// import { addCard } from "../features/card/cardSlice";
+import { addCard } from "../features/card/cardSlice";
+import { useNavigate } from "react-router-dom";
 
-function AddCardPage(cards) {
+function AddCardPage() {
   const [cardNumber, setCardNumber] = useState();
   const [validThru, setValidThru] = useState();
   const [name, setName] = useState();
   const [brand, setBrand] = useState();
-  // const dispatch = useDispatch();
-
-  let addCard = () => {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
       <h1>New card</h1>
-      <form
-        onSubmit={() => {
-          let data = {
-            cardNumber,
-            validThru,
-            name,
-            brand,
-          };
-          // dispatch(addCard(data));
-        }}
-      >
+      <form>
         <p>
           Card Number:
           <input
@@ -62,11 +52,27 @@ function AddCardPage(cards) {
             }}
           ></input>
         </p>
-        <button type="submit">Add card</button>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(
+              addCard({
+                id: Date.now(),
+                cardNumber: cardNumber,
+                validThru: validThru,
+                name: name,
+                brand: brand,
+              })
+            );
+            navigate("/");
+          }}
+        >
+          Add card
+        </button>
       </form>
       <Card
         bgColor={"blue"}
-        name={name}
+        name={name?.toUpperCase()}
         brand={brand}
         cardNumber={cardNumber}
         validThru={validThru}
