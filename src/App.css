@@ -42,6 +42,15 @@
   padding: 2em;
 }
 
+.deleteCardBtn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
 .addNewCard {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -55,11 +64,20 @@
   transition: border-color 0.25s;
 }
 
+.cardBtnContainer {
+  display: flex;
+  align-items: center;
+}
+
 .addCardLink {
   width: 8em;
   margin: 16px;
   background-color: blue;
   color: white;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 4px;
+}
+
+.hidden {
+  visibility: hidden;
 }

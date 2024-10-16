@@ -9,12 +9,14 @@ import {
 import StartPage from "./routes/StartPage";
 import AddCardPage from "./routes/AddCardPage";
 import Root from "./routes/Root";
+import EditCardPage from "./routes/EditCardPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<StartPage />} />
       <Route path="addcard" element={<AddCardPage />} />
+      <Route path="card/:id" element={<EditCardPage />} />
     </Route>
   )
 );
