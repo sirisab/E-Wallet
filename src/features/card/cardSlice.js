@@ -1,25 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const cardSlice = createSlice({
   name: "cards",
   initialState: {
     cards: [
       {
-        cardNumber: "1111 1111 1111 1111",
-        validThru: "01/01",
-        name: "Siri Testkort 1",
-        brand: "ABC",
+        bgColor: "pink",
+        cardNumber: "4455 6655 3344 2233",
+        validThru: "23/09",
+        name: "SIRI BACKSTRÖM",
+        brand: "Nordea",
+        active: true,
+      },
+      {
+        bgColor: "blue",
+        cardNumber: "4455 6655 3344 2233",
+        validThru: "23/12",
+        name: "ISIS BACKSTRÖM",
+        brand: "Handelsbanken",
+        active: false,
       },
     ],
   },
   reducers: {
     addCard: (state, action) => {
       state.cards.push(action.payload);
+      console.log("state:", state);
+      console.log("action.payload", action.payload);
+      window.location.href = "/";
+    },
+    deleteCard: (state, action) => {
+      console.log("state:", state);
+      console.log("action.payload", action.payload);
+      return {
+        ...state,
+        cards: state.cards.filter((card, i) => i !== action.payload),
+      };
     },
   },
 });
 
 export default cardSlice.reducer;
 
-export const addCard = cardSlice.actions.addCard;
+export const { addCard, deleteCard } = cardSlice.actions;

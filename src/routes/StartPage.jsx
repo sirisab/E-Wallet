@@ -1,27 +1,10 @@
-import { useState } from "react";
 import Card from "../features/card/Card";
 import { Link } from "react-router-dom";
-import AddCardPage from "./AddCardPage";
+import { useSelector } from "react-redux";
 
 function Startpage() {
-  const [cards, setCards] = useState([
-    {
-      bgColor: "pink",
-      cardNumber: "4455 6655 3344 2233",
-      validThru: "23/09",
-      name: "SIRI BACKSTRÖM",
-      brand: "Nordea",
-      active: true,
-    },
-    {
-      bgColor: "blue",
-      cardNumber: "4455 6655 3344 2233",
-      validThru: "23/12",
-      name: "ISIS BACKSTRÖM",
-      brand: "Handelsbanken",
-      active: false,
-    },
-  ]);
+  const { cards } = useSelector((state) => state.cards);
+  console.log(cards);
   return (
     <>
       {cards.map((card, i) => (
