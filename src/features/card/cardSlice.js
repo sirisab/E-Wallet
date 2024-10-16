@@ -5,6 +5,7 @@ const cardSlice = createSlice({
   initialState: {
     cards: [
       {
+        id: 54,
         bgColor: "pink",
         cardNumber: "4455 6655 3344 2233",
         validThru: "23/09",
@@ -13,6 +14,7 @@ const cardSlice = createSlice({
         active: true,
       },
       {
+        id: 77,
         bgColor: "blue",
         cardNumber: "4455 6655 3344 2233",
         validThru: "23/12",
@@ -27,14 +29,11 @@ const cardSlice = createSlice({
       state.cards.push(action.payload);
       console.log("state:", state);
       console.log("action.payload", action.payload);
-      window.location.href = "/";
     },
     deleteCard: (state, action) => {
-      console.log("state:", state);
-      console.log("action.payload", action.payload);
       return {
         ...state,
-        cards: state.cards.filter((card, i) => i !== action.payload),
+        cards: state.cards.filter((card) => card.id !== action.payload),
       };
     },
   },

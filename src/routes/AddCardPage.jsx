@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
+import { useNavigate } from "react-router-dom";
 
 function AddCardPage() {
   const [cardNumber, setCardNumber] = useState();
@@ -9,6 +10,7 @@ function AddCardPage() {
   const [name, setName] = useState();
   const [brand, setBrand] = useState();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -55,12 +57,14 @@ function AddCardPage() {
           onClick={() => {
             dispatch(
               addCard({
+                id: Date.now(),
                 cardNumber: cardNumber,
                 validThru: validThru,
                 name: name,
                 brand: brand,
               })
             );
+            navigate("/");
           }}
         >
           Add card

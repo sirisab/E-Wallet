@@ -12,7 +12,6 @@ function Startpage() {
       {cards.map((card, i) => (
         <div key={i}>
           <Card
-            key={i}
             bgColor={card.bgColor}
             cardNumber={card.cardNumber}
             validThru={card.validThru}
@@ -23,7 +22,7 @@ function Startpage() {
           <button
             className="deleteCardBtn"
             onClick={() => {
-              dispatch(deleteCard(i));
+              dispatch(deleteCard(card.id));
             }}
           >
             <FaTrash />
