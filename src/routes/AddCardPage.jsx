@@ -17,6 +17,18 @@ function AddCardPage() {
   return (
     <>
       <h2>New card</h2>
+      {/* Preview of card */}
+      <Card
+        bgColor={"blue"}
+        name={name?.toUpperCase()}
+        brand={brand}
+        cardNumber={cardNumber}
+        validThru={
+          validThruYear && validThruMonth
+            ? `${validThruYear} / ${validThruMonth.toString().padStart(2, "0")}`
+            : ""
+        }
+      />
       <form>
         <p>
           Card Number:
@@ -88,19 +100,6 @@ function AddCardPage() {
           Add card
         </button>
       </form>
-
-      {/* Preview of card */}
-      <Card
-        bgColor={"blue"}
-        name={name?.toUpperCase()}
-        brand={brand}
-        cardNumber={cardNumber}
-        validThru={
-          validThruYear && validThruMonth
-            ? `${validThruYear} / ${validThruMonth.toString().padStart(2, "0")}`
-            : ""
-        }
-      />
     </>
   );
 }
