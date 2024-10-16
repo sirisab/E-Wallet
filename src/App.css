@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -33,6 +33,11 @@
   }
 }
 
+.startPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .card {
   padding: 2em;
 }
@@ -48,4 +53,13 @@
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+.addCardLink {
+  width: 8em;
+  margin: 16px;
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+  padding: 4px;
 }
