@@ -21,7 +21,6 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <h1>E-wallet</h1>
       <RouterProvider router={router} />
     </>
   );
