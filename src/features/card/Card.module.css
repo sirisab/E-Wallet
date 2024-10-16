@@ -1,21 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
 
-.cardContainer {
+.card {
+  color: rgb(95, 95, 95);
+  width: 200px;
+  height: 110px;
+  padding: 16px;
+  margin: 8px;
   display: flex;
-  align-items: center;
-  .card {
-    color: rgb(95, 95, 95);
-    width: 200px;
-    height: 110px;
-    padding: 16px;
-    margin: 8px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    font-family: "Cutive Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
-  }
+  flex-direction: column;
+  border-radius: 8px;
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .pink {
@@ -55,11 +51,14 @@
   font-size: 10px;
 }
 
-.deleteCardBtn {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
+.Handelsbanken {
+  background-color: rgb(223, 0, 134);
+}
+
+.Nordea {
+  background-color: rgb(0, 224, 216);
+}
+
+.SEB {
+  background-color: rgb(193, 255, 93);
 }

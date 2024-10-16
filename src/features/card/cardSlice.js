@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { validateCardData } from "../../utils/helper";
 
 const cardSlice = createSlice({
   name: "cards",
@@ -27,8 +28,6 @@ const cardSlice = createSlice({
   reducers: {
     addCard: (state, action) => {
       state.cards.push(action.payload);
-      console.log("state:", state);
-      console.log("action.payload", action.payload);
     },
     deleteCard: (state, action) => {
       return {

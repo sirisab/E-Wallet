@@ -1,11 +1,18 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
 
-function AddCardPage() {
+function EditCardPage() {
+  //   {
+  //   cardNumber,
+  //   validThruYear,
+  //   validThruMonth,
+  //   name,
+  //   brand,
+  // }
   const [cardNumber, setCardNumber] = useState();
   const [validThruYear, setValidThruYear] = useState();
   const [validThruMonth, setValidThruMonth] = useState();
@@ -13,10 +20,12 @@ function AddCardPage() {
   const [brand, setBrand] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let location = useLocation();
+  console.log(location.state);
 
   return (
     <>
-      <h2>New card</h2>
+      <h2>Edit card</h2>
       <form>
         <p>
           Card Number:
@@ -25,6 +34,7 @@ function AddCardPage() {
             onChange={(event) => {
               setCardNumber(event.target.value);
             }}
+            placeholder={cardNumber}
           ></input>
         </p>
         <p>
@@ -34,12 +44,14 @@ function AddCardPage() {
             onChange={(event) => {
               setValidThruYear(event.target.value);
             }}
+            placeholder={validThruYear}
           ></input>
           <input
             type="text"
             onChange={(event) => {
               setValidThruMonth(event.target.value);
             }}
+            placeholder={validThruMonth}
           ></input>
         </p>
         <p>
@@ -49,6 +61,7 @@ function AddCardPage() {
             onChange={(event) => {
               setName(event.target.value);
             }}
+            placeholder={name}
           ></input>
         </p>
         <p>
@@ -105,4 +118,4 @@ function AddCardPage() {
   );
 }
 
-export default AddCardPage;
+export default EditCardPage;
