@@ -14,12 +14,48 @@ function AddCardPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleAddCard = () => {
+    const dataBeingSent = {
+      bgColor: brand,
+      id: Date.now(),
+      cardNumber,
+      validThru: `${validThruYear} / ${validThruMonth
+        .toString()
+        .padStart(2, "0")}`,
+      name: name.toUpperCase(),
+      brand,
+      active: false,
+    };
+
+    const error = validateCardData(dataBeingSent);
+
+    if (!error) {
+      dispatch(
+        addCard({
+          bgColor: brand,
+          id: Date.now(),
+          cardNumber: cardNumber,
+          validThru: `${validThruYear} / ${validThruMonth
+            .toString()
+            .padStart(2, "0")}`,
+          name: name.toUpperCase(),
+          brand: brand,
+          active: false,
+        })
+      );
+      alert("Card was added!");
+      navigate("/");
+    } else {
+      alert(`Card could not be added: ${error}`);
+    }
+  };
+
   return (
     <>
       <h2>New card</h2>
       {/* Preview of card */}
       <Card
-        bgColor={"blue"}
+        bgColor={brand}
         name={name?.toUpperCase()}
         brand={brand}
         cardNumber={cardNumber}
@@ -33,7 +69,7 @@ function AddCardPage() {
         <p>
           Card Number:
           <input
-            type="text"
+            type="number"
             onChange={(event) => {
               setCardNumber(event.target.value);
             }}
@@ -42,13 +78,13 @@ function AddCardPage() {
         <p>
           Valid Thru:
           <input
-            type="text"
+            type="number"
             onChange={(event) => {
               setValidThruYear(event.target.value);
             }}
           ></input>
           <input
-            type="text"
+            type="number"
             onChange={(event) => {
               setValidThruMonth(event.target.value);
             }}
@@ -81,20 +117,7 @@ function AddCardPage() {
         <button
           type="button"
           onClick={() => {
-            dispatch(
-              addCard({
-                bgColor: brand,
-                id: Date.now(),
-                cardNumber: cardNumber,
-                validThru: `${validThruYear} / ${validThruMonth
-                  .toString()
-                  .padStart(2, "0")}`,
-                name: name.toUpperCase(),
-                brand: brand,
-                active: false,
-              })
-            );
-            navigate("/");
+            handleAddCard();
           }}
         >
           Add card

@@ -1,9 +1,7 @@
 export function validateCardData(data) {
-  let errors = [];
-
   //   Fältet kortnummer måste innehålla 16 siffror.
-  if (data.cardNumber.length < 16) {
-    errors.push("Card number must consist of 16 digits");
+  if (data.cardNumber.length !== 16) {
+    return "Card number must consist of 16 digits";
   }
 
   // Utgångsdatum får inte vara ett datum som redan passerat.
@@ -11,7 +9,8 @@ export function validateCardData(data) {
   // }
 
   // Namnet får inte innehålla siffror.
-  if (data.match("/d+/")) {
-    errors.push("Name cannot include numbers");
+  const letters = /^[A-Za-z]+$/;
+  if (!data.name.match(letters)) {
+    return "Name cannot include numbers";
   }
 }
