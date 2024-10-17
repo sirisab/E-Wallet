@@ -1,6 +1,8 @@
 export function validateCardData(data) {
+  let remSpacesInput = data.cardNumber.replace(/ /g, "");
+
   //   Fältet kortnummer måste innehålla 16 siffror.
-  if (data.cardNumber.length !== 16) {
+  if (remSpacesInput.length !== 16) {
     return "Card number must consist of 16 digits";
   }
 
@@ -9,7 +11,7 @@ export function validateCardData(data) {
   // }
 
   // Namnet får inte innehålla siffror.
-  const letters = /^[A-Za-z]+$/;
+  const letters = /^[A-Öa-ö ]+$/;
   if (!data.name.match(letters)) {
     return "Name cannot include numbers";
   }

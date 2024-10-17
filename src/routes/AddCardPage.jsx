@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
 import { useNavigate } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
+import { formatCreditCard, getCreditCardType } from "cleave-zen";
 
 function AddCardPage() {
+  const inputRef = useRef(null);
+  const [value, setValue] = useState("");
+  const [type, setType] = useState("");
+
   const [cardNumber, setCardNumber] = useState();
   const [validThruYear, setValidThruYear] = useState();
   const [validThruMonth, setValidThruMonth] = useState();
@@ -18,7 +23,7 @@ function AddCardPage() {
     const dataBeingSent = {
       bgColor: brand,
       id: Date.now(),
-      cardNumber,
+      cardNumber: value,
       validThru: `${validThruYear} / ${validThruMonth
         .toString()
         .padStart(2, "0")}`,
@@ -34,7 +39,7 @@ function AddCardPage() {
         addCard({
           bgColor: brand,
           id: Date.now(),
-          cardNumber: cardNumber,
+          cardNumber: value,
           validThru: `${validThruYear} / ${validThruMonth
             .toString()
             .padStart(2, "0")}`,
@@ -58,7 +63,7 @@ function AddCardPage() {
         bgColor={brand}
         name={name?.toUpperCase()}
         brand={brand}
-        cardNumber={cardNumber}
+        cardNumber={value}
         validThru={
           validThruYear && validThruMonth
             ? `${validThruYear} / ${validThruMonth.toString().padStart(2, "0")}`
@@ -69,9 +74,12 @@ function AddCardPage() {
         <p>
           Card Number:
           <input
-            type="number"
+            ref={inputRef}
+            value={value}
             onChange={(event) => {
-              setCardNumber(event.target.value);
+              const value = event.target.value;
+              setValue(formatCreditCard(value));
+              setType(getCreditCardType(value));
             }}
           ></input>
         </p>
