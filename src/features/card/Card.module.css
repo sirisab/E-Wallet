@@ -2,16 +2,17 @@
 
 .card {
   color: rgb(214, 230, 255);
-  width: 200px;
-  height: 110px;
+  width: 300px;
+  height: 160px;
   padding: 16px;
   margin: 8px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   font-family: "Cutive Mono", monospace;
-  font-weight: 400;
+  font-weight: 500;
   font-style: oblique;
+  text-shadow: 1px 1px 2px pink;
 }
 
 .chip {
@@ -19,66 +20,64 @@
 }
 
 .brand {
+  padding: 0px 10px;
   text-align: right;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 30px;
+  text-shadow: none;
 }
 
 .cardNumber {
   text-align: left;
-  font-size: 16px;
+  font-size: 22px;
+  text-shadow: 1px 1px 2px pink;
 }
 
 .validThru {
   text-align: left;
-  font-size: 10px;
+  font-size: 14px;
+  span {
+    color: black;
+    text-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 8px;
+  }
 }
 
 .name {
   text-align: left;
-  font-size: 10px;
+  font-size: 14px;
 }
-
-/* .Handelsbanken {
-  background-color: rgb(223, 0, 134);
-}
-
-.Nordea {
-  background-color: rgb(0, 224, 216);
-}
-
-.SEB {
-  background-color: rgb(193, 255, 93);
-} */
 
 .Igor {
   background: repeating-linear-gradient(
-    32deg,
-    #e31212,
-    #e31212 20px,
-    #edb3ff 20px,
-    #edb3ff
+    0deg,
+    #d80707,
+    #d80707 90px,
+    #edb3ff 62px,
+    #edb3ff 640px
   );
 }
 
 .Chroma {
-  background: repeating-linear-gradient(
-    12deg,
-    #12560d,
-    #12560d 15px,
-    #000000 30px,
-    #000000 30px,
-    #000000
+  background: repeating-radial-gradient(
+    circle,
+    #000000,
+    #000000 110px,
+    #12560d 200px,
+    #12560d 200px
   );
 }
 
 .Wolf {
-  background: repeating-radial-gradient(
-    circle,
-    #d80707,
-    #d80707 16px,
-    #edb3ff 10px,
-    #edb3ff 20px
+  background: repeating-linear-gradient(
+    95deg,
+    #ffffff,
+    #ffffff 10px,
+    #07a4d8 40px,
+    #07a4d8 400px
   );
 }
 

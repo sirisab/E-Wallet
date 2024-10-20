@@ -20,7 +20,8 @@ function Startpage() {
               key={i}
               bgColor={card.bgColor}
               cardNumber={card.cardNumber}
-              validThru={card.validThru}
+              validThruMonth={card.validThruMonth}
+              validThruYear={card.validThruYear}
               name={card.name}
               brand={card.brand}
               active={card.active}
@@ -45,7 +46,8 @@ function Startpage() {
               <Card
                 bgColor={card.bgColor}
                 cardNumber={card.cardNumber}
-                validThru={card.validThru}
+                validThruMonth={card.validThruMonth}
+                validThruYear={card.validThruYear}
                 name={card.name}
                 brand={card.brand}
                 active={card.active}

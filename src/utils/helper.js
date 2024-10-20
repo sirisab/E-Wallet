@@ -13,8 +13,8 @@ export function validateCardData(data) {
 
   // Create a date object from input values
   let validThruDate = new Date(
-    `20${data.validThru.year}`,
-    data.validThru.month,
+    `20${data.validThruYear}`,
+    data.validThruMonth,
     0
   );
 

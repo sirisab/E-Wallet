@@ -24,14 +24,13 @@ function AddCardPage() {
 
   const handleAddCard = (event) => {
     event.preventDefault();
+
     const dataBeingSent = {
       bgColor: brand,
       id: Date.now(),
       cardNumber: value,
-      validThru: {
-        month: validThruMonth.toString().padStart(2, "0"),
-        year: validThruYear,
-      },
+      validThruMonth: validThruMonth.toString().padStart(2, "0"),
+      validThruYear: validThruYear,
       name: name.toUpperCase(),
       brand,
       active: false,
@@ -50,7 +49,7 @@ function AddCardPage() {
   };
 
   return (
-    <>
+    <main>
       <h2>New card</h2>
       {/* Preview of card */}
       <Card
@@ -58,16 +57,8 @@ function AddCardPage() {
         name={name?.toUpperCase()}
         brand={brand}
         cardNumber={value}
-        validThru={
-          validThruYear && validThruMonth
-            ? `${validThruMonth.toString().padStart(2, "0")} / ${validThruYear}`
-            : ""
-        }
-        // validThru={
-        //   validThruYear && validThruMonth
-        //     ? `${validThruMonth.toString().padStart(2, "0")} / ${validThruYear}`
-        //     : ""
-        // }
+        validThruMonth={validThruMonth?.toString().padStart(2, "0")}
+        validThruYear={validThruYear}
       />
       <div className="formDiv">
         <form onSubmit={handleAddCard}>
@@ -92,6 +83,7 @@ function AddCardPage() {
               value={value}
               onChange={(event) => {
                 const value = event.target.value;
+                console.log(value);
                 setValue(formatCreditCard(value));
                 setType(getCreditCardType(value));
               }}
@@ -106,7 +98,9 @@ function AddCardPage() {
               placeholder="MM"
               min="01"
               max="12"
+              maxLength={2}
               onChange={(event) => {
+                console.log(event.target.value);
                 setValidThruMonth(event.target.value);
               }}
               required
@@ -117,7 +111,9 @@ function AddCardPage() {
               id="year"
               placeholder="YY"
               min="24"
+              maxLength={2}
               onChange={(event) => {
+                console.log(event.target.value);
                 setValidThruYear(event.target.value);
               }}
               required
@@ -128,6 +124,7 @@ function AddCardPage() {
             <input
               type="text"
               onChange={(event) => {
+                console.log(event.target.value);
                 setName(event.target.value);
               }}
               required
@@ -140,6 +137,7 @@ function AddCardPage() {
               onChange={(event) => {
                 setCcv(event.target.value);
               }}
+              maxLength={3}
               required
             ></input>
           </p>
@@ -147,7 +145,7 @@ function AddCardPage() {
           <button type="submit">Add card</button>
         </form>
       </div>
-    </>
+    </main>
   );
 }
 
