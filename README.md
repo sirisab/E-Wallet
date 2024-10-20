@@ -32,11 +32,11 @@ Applikationen ska ha följande routes (du får ändra namnet på dessa om du vil
 
 ● Följande validering för korten ska finnas:
 
-Fältet kortnummer måste innehålla 16 siffror.
+~~Fältet kortnummer måste innehålla 16 siffror.~~
 
 Utgångsdatum får inte vara ett datum som redan passerat.
 
-Namnet får inte innehålla siffror.
+~~Namnet får inte innehålla siffror.~~
 
 ~~Varje kortutgivare ska ge kortet olika utseenden i form av kortets färg + namn eller logotyp för kortutgivaren.~~
 

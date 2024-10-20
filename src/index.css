@@ -28,6 +28,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  width: 100vw;
   min-height: 100vh;
 }
 
@@ -40,6 +41,7 @@ h1 {
 
 header {
   background-color: rgb(42, 42, 81);
+  text-align: center;
 }
 
 button {
@@ -73,4 +75,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.site-wrapper {
+  width: 100vw;
 }

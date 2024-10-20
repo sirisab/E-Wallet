@@ -2,7 +2,6 @@
   max-width: 1280px;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 
 .logo {
@@ -76,6 +75,18 @@
   color: white;
   border-radius: 8px;
   padding: 4px;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  margin: 16px;
+  #year,
+  #month {
+    width: 40px;
+  }
 }
 
 .hidden {

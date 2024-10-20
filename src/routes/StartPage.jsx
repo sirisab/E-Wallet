@@ -26,6 +26,7 @@ function Startpage() {
               active={card.active}
             />
             <button
+              type="button"
               className="deleteCardBtn hidden"
               onClick={() => {
                 dispatch(deleteCard(card.id));
@@ -40,7 +41,7 @@ function Startpage() {
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Link to={`/card/${card.id}`} data={card}>
+            <Link to={`/card/${card.id}`}>
               <Card
                 bgColor={card.bgColor}
                 cardNumber={card.cardNumber}
@@ -51,6 +52,7 @@ function Startpage() {
               />
             </Link>
             <button
+              type="button"
               className="deleteCardBtn"
               onClick={() => {
                 dispatch(deleteCard(card.id));
@@ -60,10 +62,8 @@ function Startpage() {
             </button>
           </div>
         ))}
-      {/* <Link to="/addcard" cards={cards}>
-        <div className="addCardLink">Add new Card</div>
-      </Link> */}
       <button
+        type="button"
         onClick={() => {
           if (cards.length === 4) {
             alert("You can only have 4 cards registered. Delete a card!");

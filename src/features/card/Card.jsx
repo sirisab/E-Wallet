@@ -12,14 +12,16 @@ const Card = (
   return (
     <>
       <div className={`${styles.card} ${styles[bgColor]}`}>
-        <div className={styles["brand"]}>{brand}</div>
-        <div className={styles["chip"]}>
+        <div className={styles.brand}>{brand}</div>
+        <div className={styles.chip}>
           <img src={chip} />
         </div>
-        <div className={styles["cardNumber"]}>{cardNumber}</div>
+        <div className={styles.cardNumber}>{cardNumber}</div>
 
-        <div className={styles["validThru"]}>VALID THRU: {validThru}</div>
-        <div className={styles["name"]}>{name}</div>
+        <div className={styles.validThru}>
+          VALID THRU: {validThru.month}/{validThru.year}
+        </div>
+        <div className={styles.name}>{name}</div>
       </div>
     </>
   );
