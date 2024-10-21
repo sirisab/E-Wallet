@@ -12,6 +12,7 @@ Beskrivning: Du ska skapa en applikation där användaren kan hantera olika be
 Applikationen ska ha följande routes (du får ändra namnet på dessa om du vill):
 
 / (startsida)
+
 ● ~~Lista ut samtliga kort användaren har. Användaren kan ha max 4 kort.~~
 
 ● ~~Det ska finnas en Add new card-knapp, som routar användaren vidare till /addcard.~~
@@ -20,7 +21,7 @@ Applikationen ska ha följande routes (du får ändra namnet på dessa om du vil
 
 ● ~~(VG) Högst upp ska du visa ett aktivt kort. Övriga kort ska vara inaktiva.~~
 
-● (VG) Användaren ska kunna klicka på ett kort för att navigera till /card/:id (med id för det valda kortet).
+● ~~(VG) Användaren ska kunna klicka på ett kort för att navigera till /card/:id (med id för det valda kortet).~~
 
 /addcard
 ● ~~Ett nytt kort ska kunna läggas till med följande information: Kortutgivare, card number, cardholder, expire month, expire year, CCV. (Se bild nedan).~~
@@ -31,11 +32,11 @@ Applikationen ska ha följande routes (du får ändra namnet på dessa om du vil
 
 ● Följande validering för korten ska finnas:
 
-Fältet kortnummer måste innehålla 16 siffror.
+~~Fältet kortnummer måste innehålla 16 siffror.~~
 
 Utgångsdatum får inte vara ett datum som redan passerat.
 
-Namnet får inte innehålla siffror.
+~~Namnet får inte innehålla siffror.~~
 
 ~~Varje kortutgivare ska ge kortet olika utseenden i form av kortets färg + namn eller logotyp för kortutgivaren.~~
 

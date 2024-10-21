@@ -2,22 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
 
 function EditCardPage() {
-  //   {
-  //   cardNumber,
-  //   validThruYear,
-  //   validThruMonth,
-  //   name,
-  //   brand,
-  // }
   const [cardNumber, setCardNumber] = useState();
   const [validThruYear, setValidThruYear] = useState();
   const [validThruMonth, setValidThruMonth] = useState();
   const [name, setName] = useState();
   const [brand, setBrand] = useState();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let location = useLocation();

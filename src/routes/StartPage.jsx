@@ -10,8 +10,8 @@ function Startpage() {
   let dispatch = useDispatch();
   const cards = useSelector((store) => store.cardReducer.cards);
   return (
-    <div className="startPage">
-      <h2>Active card</h2>
+    <main>
+      <h3>Active card</h3>
       {cards
         .filter((card) => card.active)
         .map((card, i) => (
@@ -20,12 +20,14 @@ function Startpage() {
               key={i}
               bgColor={card.bgColor}
               cardNumber={card.cardNumber}
-              validThru={card.validThru}
+              validThruMonth={card.validThruMonth}
+              validThruYear={card.validThruYear}
               name={card.name}
               brand={card.brand}
               active={card.active}
             />
             <button
+              type="button"
               className="deleteCardBtn hidden"
               onClick={() => {
                 dispatch(deleteCard(card.id));
@@ -35,22 +37,24 @@ function Startpage() {
             </button>
           </div>
         ))}
-      <h2>Unactive cards</h2>
+      <h3>Unactive cards</h3>
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Link to={`/card/${card.id}`} data={card}>
+            <Link to={`/card/${card.id}`}>
               <Card
                 bgColor={card.bgColor}
                 cardNumber={card.cardNumber}
-                validThru={card.validThru}
+                validThruMonth={card.validThruMonth}
+                validThruYear={card.validThruYear}
                 name={card.name}
                 brand={card.brand}
                 active={card.active}
               />
             </Link>
             <button
+              type="button"
               className="deleteCardBtn"
               onClick={() => {
                 dispatch(deleteCard(card.id));
@@ -60,10 +64,9 @@ function Startpage() {
             </button>
           </div>
         ))}
-      {/* <Link to="/addcard" cards={cards}>
-        <div className="addCardLink">Add new Card</div>
-      </Link> */}
       <button
+        className="addNewCardLink"
+        type="button"
         onClick={() => {
           if (cards.length === 4) {
             alert("You can only have 4 cards registered. Delete a card!");
@@ -74,7 +77,7 @@ function Startpage() {
       >
         Add a card
       </button>
-    </div>
+    </main>
   );
 }
 
