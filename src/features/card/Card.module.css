@@ -2,10 +2,9 @@
 
 .card {
   color: rgb(214, 230, 255);
-  width: 300px;
+  width: 250px;
   height: 160px;
   padding: 16px;
-  margin: 8px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -24,13 +23,13 @@
   text-align: right;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   text-shadow: none;
 }
 
 .cardNumber {
   text-align: left;
-  font-size: 22px;
+  font-size: 20px;
   text-shadow: 1px 1px 2px pink;
 }
 
@@ -69,6 +68,10 @@
     #12560d 200px,
     #12560d 200px
   );
+
+  span {
+    color: white;
+  }
 }
 
 .Wolf {
@@ -81,6 +84,10 @@
   );
 }
 
-.choose {
+.Choose {
   background-color: gray;
+  text-shadow: none;
+  strong {
+    color: gray;
+  }
 }

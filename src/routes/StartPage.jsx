@@ -10,8 +10,8 @@ function Startpage() {
   let dispatch = useDispatch();
   const cards = useSelector((store) => store.cardReducer.cards);
   return (
-    <div className="startPage">
-      <h2>Active card</h2>
+    <main>
+      <h3>Active card</h3>
       {cards
         .filter((card) => card.active)
         .map((card, i) => (
@@ -37,7 +37,7 @@ function Startpage() {
             </button>
           </div>
         ))}
-      <h2>Unactive cards</h2>
+      <h3>Unactive cards</h3>
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
@@ -65,6 +65,7 @@ function Startpage() {
           </div>
         ))}
       <button
+        className="addNewCardLink"
         type="button"
         onClick={() => {
           if (cards.length === 4) {
@@ -76,7 +77,7 @@ function Startpage() {
       >
         Add a card
       </button>
-    </div>
+    </main>
   );
 }
 

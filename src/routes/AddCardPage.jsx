@@ -8,15 +8,12 @@ import { formatCreditCard, getCreditCardType } from "cleave-zen";
 
 function AddCardPage() {
   const inputRef = useRef(null);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("**** **** **** ****");
   const [type, setType] = useState("");
-
-  const [cardNumber, setCardNumber] = useState();
-  const [validThruYear, setValidThruYear] = useState();
-  const [validThruMonth, setValidThruMonth] = useState();
-  const [validThru, setValidThru] = useState();
-  const [name, setName] = useState();
-  const [brand, setBrand] = useState();
+  const [validThruYear, setValidThruYear] = useState("YY");
+  const [validThruMonth, setValidThruMonth] = useState("MM");
+  const [name, setName] = useState("Name");
+  const [brand, setBrand] = useState("Choose");
   const [ccv, setCcv] = useState();
 
   const dispatch = useDispatch();
@@ -34,6 +31,7 @@ function AddCardPage() {
       name: name.toUpperCase(),
       brand,
       active: false,
+      ccv,
     };
 
     const error = validateCardData(dataBeingSent);
@@ -62,22 +60,24 @@ function AddCardPage() {
       />
       <div className="formDiv">
         <form onSubmit={handleAddCard}>
-          <p>Brand:</p>
           <p>
+            Brand:
+            <br />
             <select
               onChange={(event) => {
                 setBrand(event.target.value);
               }}
               required
             >
-              <option value="">Choose a brand</option>
+              <option value="Choose">Choose a brand</option>
               <option>Igor</option>
               <option>Chroma</option>
               <option>Wolf</option>
             </select>
           </p>
-          <p>Card Number:</p>
           <p>
+            Card Number:
+            <br />
             <input
               ref={inputRef}
               value={value}
@@ -90,15 +90,15 @@ function AddCardPage() {
               required
             ></input>
           </p>
-          <p>Valid Thru:</p>
           <p>
+            Valid Thru:
+            <br />
             <input
               type="number"
               id="month"
               placeholder="MM"
               min="01"
               max="12"
-              maxLength={2}
               onChange={(event) => {
                 console.log(event.target.value);
                 setValidThruMonth(event.target.value);
@@ -111,7 +111,6 @@ function AddCardPage() {
               id="year"
               placeholder="YY"
               min="24"
-              maxLength={2}
               onChange={(event) => {
                 console.log(event.target.value);
                 setValidThruYear(event.target.value);
@@ -119,8 +118,9 @@ function AddCardPage() {
               required
             ></input>
           </p>
-          <p>Name:</p>
           <p>
+            Name:
+            <br />
             <input
               type="text"
               onChange={(event) => {
@@ -130,14 +130,14 @@ function AddCardPage() {
               required
             ></input>
           </p>
-          <p>CCV:</p>
           <p>
+            CCV:
+            <br />
             <input
               type="number"
               onChange={(event) => {
                 setCcv(event.target.value);
               }}
-              maxLength={3}
               required
             ></input>
           </p>

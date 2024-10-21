@@ -12,7 +12,9 @@ const Card = (
   return (
     <>
       <div className={`${styles.card} ${styles[bgColor]}`}>
-        <div className={styles.brand}>{brand}</div>
+        <div className={styles.brand}>
+          <strong>{brand}</strong>
+        </div>
         <div className={styles.chip}>
           <img src={chip} />
         </div>
