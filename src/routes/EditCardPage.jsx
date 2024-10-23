@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
 
 function EditCardPage() {
+  // const [card, setCard] = useState();
   const [cardNumber, setCardNumber] = useState();
   const [validThruYear, setValidThruYear] = useState();
   const [validThruMonth, setValidThruMonth] = useState();
@@ -15,7 +16,10 @@ function EditCardPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let location = useLocation();
-  console.log(location.state);
+  let { cardId } = useParams();
+  const cards = useSelector((store) => store.cardReducer.cards);
+
+  let card = cards.find((card) => card.id == cardId);
 
   return (
     <>
@@ -28,7 +32,7 @@ function EditCardPage() {
             onChange={(event) => {
               setCardNumber(event.target.value);
             }}
-            placeholder={cardNumber}
+            placeholder={card.cardNumber}
           ></input>
         </p>
         <p>
@@ -38,14 +42,14 @@ function EditCardPage() {
             onChange={(event) => {
               setValidThruYear(event.target.value);
             }}
-            placeholder={validThruYear}
+            placeholder={card.validThruYear}
           ></input>
           <input
             type="text"
             onChange={(event) => {
               setValidThruMonth(event.target.value);
             }}
-            placeholder={validThruMonth}
+            placeholder={card.validThruMonth}
           ></input>
         </p>
         <p>
@@ -55,7 +59,7 @@ function EditCardPage() {
             onChange={(event) => {
               setName(event.target.value);
             }}
-            placeholder={name}
+            placeholder={card.name}
           ></input>
         </p>
         <p>
@@ -64,6 +68,7 @@ function EditCardPage() {
             onChange={(event) => {
               setBrand(event.target.value);
             }}
+            placeholder={card.brand}
           >
             <option>Choose a brand</option>
             <option>Nordea</option>
