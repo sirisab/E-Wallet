@@ -16,7 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<StartPage />} />
       <Route path="addcard" element={<AddCardPage />} />
-      <Route path="card/:id" element={<EditCardPage />} />
+      <Route path="card/:cardId" element={<EditCardPage />} />
     </Route>
   )
 );

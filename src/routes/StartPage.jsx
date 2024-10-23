@@ -42,7 +42,7 @@ function Startpage() {
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Link to={`/card/${card.id}`}>
+            <Link to={`/card/${card.id}`} state={cards}>
               <Card
                 bgColor={card.bgColor}
                 cardNumber={card.cardNumber}
