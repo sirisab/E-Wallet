@@ -70,9 +70,9 @@ function AddCardPage() {
               required
             >
               <option value="Choose">Choose a brand</option>
-              <option>Igor</option>
-              <option>Chroma</option>
-              <option>Wolf</option>
+              <option>Gori</option>
+              <option>Kopachromia</option>
+              <option>Flow</option>
             </select>
           </p>
           <p>
