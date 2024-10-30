@@ -50,7 +50,7 @@
   font-size: 14px;
 }
 
-.Igor {
+.Gori {
   background: repeating-linear-gradient(
     0deg,
     #d80707,
@@ -60,7 +60,7 @@
   );
 }
 
-.Chroma {
+.Kopachromia {
   background: repeating-radial-gradient(
     circle,
     #000000,
@@ -74,7 +74,7 @@
   }
 }
 
-.Wolf {
+.Flow {
   background: repeating-linear-gradient(
     95deg,
     #ffffff,
