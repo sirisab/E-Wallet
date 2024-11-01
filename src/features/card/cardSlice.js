@@ -6,16 +6,6 @@ const cardSlice = createSlice({
   initialState: {
     cards: [
       {
-        id: 54,
-        bgColor: "Flow",
-        cardNumber: "4455 6655 3344 2233",
-        validThruMonth: "09",
-        validThruYear: "25",
-        name: "SIRI BACKSTRÖM",
-        brand: "Flow",
-        active: true,
-      },
-      {
         id: 77,
         bgColor: "Kopachromia",
         cardNumber: "4455 6655 3344 2233",
@@ -23,6 +13,16 @@ const cardSlice = createSlice({
         validThruYear: "25",
         name: "ISIS BACKSTRÖM",
         brand: "Kopachromia",
+        active: true,
+      },
+      {
+        id: 54,
+        bgColor: "Flow",
+        cardNumber: "4455 6655 3344 2233",
+        validThruMonth: "09",
+        validThruYear: "25",
+        name: "SIRI BACKSTRÖM",
+        brand: "Flow",
         active: false,
       },
     ],

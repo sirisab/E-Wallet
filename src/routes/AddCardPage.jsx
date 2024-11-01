@@ -1,10 +1,15 @@
 import { useDispatch } from "react-redux";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
 import { useNavigate } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
-import { formatCreditCard, getCreditCardType } from "cleave-zen";
+import {
+  DefaultCreditCardDelimiter,
+  formatCreditCard,
+  getCreditCardType,
+  registerCursorTracker,
+} from "cleave-zen";
 
 function AddCardPage() {
   const inputRef = useRef(null);
@@ -12,12 +17,21 @@ function AddCardPage() {
   const [type, setType] = useState("");
   const [validThruYear, setValidThruYear] = useState("YY");
   const [validThruMonth, setValidThruMonth] = useState("MM");
-  const [name, setName] = useState("Name");
+  const [name, setName] = useState("Firstname Lastname");
   const [brand, setBrand] = useState("Choose");
   const [ccv, setCcv] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // registerCursorTracker itself returns an unregister destructor
+    // function so you can place it here for hook component unmount
+    return registerCursorTracker({
+      input: inputRef.current,
+      delimiter: DefaultCreditCardDelimiter,
+    });
+  }, []);
 
   const handleAddCard = (event) => {
     event.preventDefault();
@@ -49,6 +63,7 @@ function AddCardPage() {
   return (
     <main>
       <h2>New card</h2>
+
       {/* Preview of card */}
       <Card
         bgColor={brand}
@@ -70,7 +85,7 @@ function AddCardPage() {
               required
             >
               <option value="Choose">Choose a brand</option>
-              <option>Gori</option>
+              <option>Gorigori</option>
               <option>Kopachromia</option>
               <option>Flow</option>
             </select>
@@ -81,9 +96,9 @@ function AddCardPage() {
             <input
               ref={inputRef}
               value={value}
+              placeholder="**** **** **** ****"
               onChange={(event) => {
                 const value = event.target.value;
-                console.log(value);
                 setValue(formatCreditCard(value));
                 setType(getCreditCardType(value));
               }}

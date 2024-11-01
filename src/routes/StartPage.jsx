@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { deleteCard } from "../features/card/cardSlice";
-import EditCardPage from "./EditCardPage";
 
 function Startpage() {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ function Startpage() {
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
             <Card
-              key={i}
               bgColor={card.bgColor}
               cardNumber={card.cardNumber}
               validThruMonth={card.validThruMonth}
@@ -26,13 +24,7 @@ function Startpage() {
               brand={card.brand}
               active={card.active}
             />
-            <button
-              type="button"
-              className="deleteCardBtn hidden"
-              onClick={() => {
-                dispatch(deleteCard(card.id));
-              }}
-            >
+            <button type="button" className="deleteCardBtn">
               <FaTrash />
             </button>
           </div>

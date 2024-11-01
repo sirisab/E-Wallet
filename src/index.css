@@ -1,8 +1,12 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap");
 
+:root {
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400; */
+  font-family: "Shippori Antique B1", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -13,6 +17,20 @@
   -moz-osx-font-smoothing: grayscale;
 
   margin: 0;
+}
+
+header {
+  height: 2em;
+  padding: 1em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+header:hover {
+  filter: drop-shadow(0 0 2em #ced0ffd8);
+}
+header.react:hover {
+  filter: drop-shadow(0 0 2em #b6effffe);
 }
 
 body {
@@ -42,7 +60,7 @@ p {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 1.9em;
   line-height: 1.1;
   color: rgb(183, 183, 183);
   margin: 0;
