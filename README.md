@@ -34,7 +34,7 @@ Applikationen ska ha följande routes (du får ändra namnet på dessa om du vil
 
 ~~Fältet kortnummer måste innehålla 16 siffror.~~
 
-Utgångsdatum får inte vara ett datum som redan passerat.
+~~Utgångsdatum får inte vara ett datum som redan passerat.~~
 
 ~~Namnet får inte innehålla siffror.~~
 
