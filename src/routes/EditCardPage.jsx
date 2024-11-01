@@ -15,7 +15,6 @@ function EditCardPage() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let location = useLocation();
   let { cardId } = useParams();
   const cards = useSelector((store) => store.cardReducer.cards);
 

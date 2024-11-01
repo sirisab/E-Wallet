@@ -3,8 +3,9 @@
 .card {
   color: rgb(214, 230, 255);
   max-width: 260px;
-  height: 150px;
-  padding: 16px 18px;
+  max-height: 160px;
+  min-height: 160px;
+  padding: 12px 18px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -25,6 +26,7 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 25px;
   text-shadow: none;
+  padding: 0px 0px 8px 0px;
 }
 
 .cardNumber {
@@ -58,7 +60,7 @@
   background: repeating-linear-gradient(
     0deg,
     #d80707,
-    #d80707 90px,
+    #d80707 100px,
     #edb3ff 62px,
     #edb3ff 640px
   );

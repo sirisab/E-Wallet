@@ -20,17 +20,20 @@
 }
 
 header {
-  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(42, 42, 81, 0.723);
+  color: #73b2dd;
+  text-align: center;
+  height: px;
   padding: 1em;
-  will-change: filter;
-  transition: filter 300ms;
+  /* will-change: filter;
+  transition: filter 300ms; */
 }
 
 header:hover {
-  filter: drop-shadow(0 0 2em #ced0ffd8);
-}
-header.react:hover {
-  filter: drop-shadow(0 0 2em #b6effffe);
+  filter: drop-shadow(0 0 2em #6f73f4d8);
 }
 
 body {
@@ -68,14 +71,6 @@ h1 {
 
 h2 {
   text-align: left;
-}
-header {
-  background-color: rgb(42, 42, 81);
-  text-align: center;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 button {

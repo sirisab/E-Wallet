@@ -24,7 +24,7 @@ function Startpage() {
               brand={card.brand}
               active={card.active}
             />
-            <button type="button" className="deleteCardBtn">
+            <button type="button" className="deleteCardBtn hidden">
               <FaTrash />
             </button>
           </div>
@@ -34,7 +34,7 @@ function Startpage() {
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Link to={`/card/${card.id}`} state={cards}>
+            <Link to={`/card/${card.id}`}>
               <Card
                 bgColor={card.bgColor}
                 cardNumber={card.cardNumber}
