@@ -4,9 +4,9 @@ import Card from "../features/card/Card";
 import { addCard } from "../features/card/cardSlice";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { validateCardData } from "../utils/helper";
+import CardForm from "../components/CardForm";
 
 function EditCardPage() {
-  // const [card, setCard] = useState();
   const [cardNumber, setCardNumber] = useState();
   const [validThruYear, setValidThruYear] = useState();
   const [validThruMonth, setValidThruMonth] = useState();
@@ -21,9 +21,10 @@ function EditCardPage() {
   let card = cards.find((card) => card.id == cardId);
 
   return (
-    <>
+    <main>
       <h2>Edit card</h2>
-      <form>
+      <CardForm />
+      {/* <form>
         <p>
           Card Number:
           <input
@@ -76,8 +77,8 @@ function EditCardPage() {
           </select>
         </p>
 
-        {/* Dispatching new card */}
-        <button
+        // Dispatching new card
+       <button
           type="button"
           onClick={() => {
             dispatch(
@@ -100,7 +101,7 @@ function EditCardPage() {
         </button>
       </form>
 
-      {/* Preview of card */}
+      // Preview of card
       <Card
         bgColor={"blue"}
         name={name?.toUpperCase()}
@@ -111,8 +112,9 @@ function EditCardPage() {
             ? `${validThruYear} / ${validThruMonth.toString().padStart(2, "0")}`
             : ""
         }
-      />
-    </>
+      />{" "}
+      */}
+    </main>
   );
 }
 

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Rubik+Puddles&family=Palette+Mosaic&family=Darumadrop+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Palette+Mosaic&family=Darumadrop+One&display=swap");
+@import "@fontsource/rubik-puddles";
 
 .card {
   color: rgb(214, 230, 255);
@@ -101,7 +102,7 @@
     #07a4d8 350px
   );
   .brand {
-    color: rgb(0, 7, 63);
+    color: rgb(0, 5, 43);
     font-family: "Rubik Puddles", serif;
     font-weight: 800;
     font-style: normal;

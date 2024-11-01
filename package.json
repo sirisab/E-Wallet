@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/rubik-puddles": "^5.1.0",
     "@reduxjs/toolkit": "^2.2.8",
     "axios": "^1.7.7",
     "cleave-zen": "^0.0.17",
