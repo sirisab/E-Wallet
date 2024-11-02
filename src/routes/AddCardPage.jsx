@@ -76,7 +76,7 @@ function AddCardPage() {
       <div className="formDiv">
         <form onSubmit={handleAddCard}>
           <p>
-            Brand:
+            Brand
             <br />
             <select
               onChange={(event) => {
@@ -91,7 +91,7 @@ function AddCardPage() {
             </select>
           </p>
           <p>
-            Card Number:
+            Card Number
             <br />
             <input
               ref={inputRef}
@@ -106,7 +106,7 @@ function AddCardPage() {
             ></input>
           </p>
           <p>
-            Valid Thru:
+            Valid Thru
             <br />
             <input
               type="number"
@@ -132,7 +132,7 @@ function AddCardPage() {
             ></input>
           </p>
           <p>
-            Name:
+            Name
             <br />
             <input
               type="text"
@@ -143,7 +143,7 @@ function AddCardPage() {
             ></input>
           </p>
           <p>
-            CCV:
+            CCV
             <br />
             <input
               type="number"

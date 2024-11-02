@@ -4,13 +4,13 @@ import { IoSettingsSharp } from "react-icons/io5";
 export const Header = () => {
   return (
     <header>
-      <IoSettingsSharp className="hidden" />
+      <IoSettingsSharp className="hidden" size="1.3em" />
 
       <Link to="/">
-        <h1>E-wallet</h1>
+        <h1>E-Wallet</h1>
       </Link>
 
-      <IoSettingsSharp size="1.5em" />
+      <IoSettingsSharp color="white" size="1.3em" />
     </header>
   );
 };

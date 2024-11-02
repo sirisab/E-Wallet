@@ -1,7 +1,8 @@
 import Card from "../features/card/Card";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaRegCreditCard } from "react-icons/fa";
+
 import { deleteCard } from "../features/card/cardSlice";
 
 function Startpage() {
@@ -10,40 +11,25 @@ function Startpage() {
   const cards = useSelector((store) => store.cardReducer.cards);
   return (
     <main>
-      <h4>Active card</h4>
+      {cards ? <h3>Active card</h3> : "No cards registered!"}
       {cards
         .filter((card) => card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Card
-              bgColor={card.bgColor}
-              cardNumber={card.cardNumber}
-              validThruMonth={card.validThruMonth}
-              validThruYear={card.validThruYear}
-              name={card.name}
-              brand={card.brand}
-              active={card.active}
-            />
+            <Card {...card} />
             <button type="button" className="deleteCardBtn hidden">
               <FaTrash />
             </button>
           </div>
         ))}
-      <h4>Unactive cards</h4>
+      {cards.length === 2 ? <h3>Unactive card</h3> : ""}
+      {cards.length > 2 ? <h3>Unactive cards</h3> : ""}
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
             <Link to={`/card/${card.id}`}>
-              <Card
-                bgColor={card.bgColor}
-                cardNumber={card.cardNumber}
-                validThruMonth={card.validThruMonth}
-                validThruYear={card.validThruYear}
-                name={card.name}
-                brand={card.brand}
-                active={card.active}
-              />
+              <Card {...card} />
             </Link>
             <button
               type="button"
@@ -52,23 +38,25 @@ function Startpage() {
                 dispatch(deleteCard(card.id));
               }}
             >
-              <FaTrash />
+              <FaTrash size="12px" />
             </button>
           </div>
         ))}
-      <button
-        className="addNewCardLink"
-        type="button"
-        onClick={() => {
-          if (cards.length === 4) {
-            alert("You can only have 4 cards registered. Delete a card!");
-          } else {
-            navigate("/addcard");
-          }
-        }}
-      >
-        Add a card
-      </button>
+      <div className="buttonDiv">
+        <button
+          className="addNewCardLink"
+          type="button"
+          onClick={() => {
+            if (cards.length === 4) {
+              alert("You can only have 4 cards registered. Delete a card!");
+            } else {
+              navigate("/addcard");
+            }
+          }}
+        >
+          Add new card
+        </button>
+      </div>
     </main>
   );
 }
