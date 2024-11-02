@@ -57,7 +57,7 @@ const CardForm = ({
               required
             >
               <option defaultValue="Choose">Choose a brand</option>
-              <option>Gori</option>
+              <option>Gorigori</option>
               <option>Kopachromia</option>
               <option>Flow</option>
             </select>

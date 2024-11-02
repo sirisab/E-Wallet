@@ -115,7 +115,6 @@ function AddCardPage() {
               min="01"
               max="12"
               onChange={(event) => {
-                console.log(event.target.value);
                 setValidThruMonth(event.target.value);
               }}
               required
@@ -127,7 +126,6 @@ function AddCardPage() {
               placeholder="YY"
               min="24"
               onChange={(event) => {
-                console.log(event.target.value);
                 setValidThruYear(event.target.value);
               }}
               required
@@ -139,7 +137,6 @@ function AddCardPage() {
             <input
               type="text"
               onChange={(event) => {
-                console.log(event.target.value);
                 setName(event.target.value);
               }}
               required

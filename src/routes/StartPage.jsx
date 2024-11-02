@@ -10,7 +10,7 @@ function Startpage() {
   const cards = useSelector((store) => store.cardReducer.cards);
   return (
     <main>
-      <h3>Active card</h3>
+      <h4>Active card</h4>
       {cards
         .filter((card) => card.active)
         .map((card, i) => (
@@ -29,7 +29,7 @@ function Startpage() {
             </button>
           </div>
         ))}
-      <h3>Unactive cards</h3>
+      <h4>Unactive cards</h4>
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
