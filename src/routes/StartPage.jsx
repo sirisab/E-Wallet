@@ -38,14 +38,12 @@ function Startpage() {
                 dispatch(deleteCard(card.id));
               }}
             >
-              <FaTrash size="12px" />
+              <FaTrash size="16px" />
             </button>
           </div>
         ))}
       <div className="buttonDiv">
         <button
-          className="addNewCardLink"
-          type="button"
           onClick={() => {
             if (cards.length === 4) {
               alert("You can only have 4 cards registered. Delete a card!");

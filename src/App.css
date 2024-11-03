@@ -22,7 +22,12 @@
   padding: 8px;
   margin: 8px;
   font-size: 10px;
+  background-color: rgb(35, 35, 35);
   color: rgb(251, 138, 81);
+}
+
+.deleteCardBtn:hover {
+  background-color: rgb(66, 66, 66);
 }
 
 .addNewCardLink {
