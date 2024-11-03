@@ -4,13 +4,22 @@ import chip from "../../../src/assets/icons8-chip-card-40.png";
 import { useDispatch } from "react-redux";
 
 const Card = (
-  { bgColor, brand, cardNumber, validThruMonth, validThruYear, name, active },
+  {
+    bgColor,
+    brand,
+    cardNumber,
+    validThruMonth,
+    validThruYear,
+    name,
+    active,
+    className,
+  },
   index
 ) => {
   let dispatch = useDispatch();
 
   return (
-    <>
+    <div className={className}>
       <div className={`${styles.card} ${styles[bgColor]}`}>
         <div className={styles.brand}>
           <strong>{brand}</strong>
@@ -25,7 +34,7 @@ const Card = (
         </div>
         <div className={styles.name}>{name}</div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,15 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useRef, useState, useEffect } from "react";
-import Card from "../features/card/Card";
-import { addCard } from "../features/card/cardSlice";
 import { useNavigate } from "react-router-dom";
-import { validateCardData } from "../utils/helper";
 import {
   DefaultCreditCardDelimiter,
   formatCreditCard,
   getCreditCardType,
   registerCursorTracker,
 } from "cleave-zen";
+import { validateCardData } from "../utils/helper";
+import Card from "../features/card/Card";
+import { addCard } from "../features/card/cardSlice";
+import CardForm from "../components/CardForm";
 
 function AddCardPage() {
   const inputRef = useRef(null);
