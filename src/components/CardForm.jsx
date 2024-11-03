@@ -1,29 +1,30 @@
-import { useDispatch } from "react-redux";
-import { useRef, useState, useEffect } from "react";
-import Card from "../features/card/Card";
-import { addCard } from "../features/card/cardSlice";
-import { useNavigate } from "react-router-dom";
-import { validateCardData } from "../utils/helper";
 import {
-  DefaultCreditCardDelimiter,
   formatCreditCard,
   getCreditCardType,
   registerCursorTracker,
+  DefaultCreditCardDelimiter,
 } from "cleave-zen";
+import { useRef, useEffect } from "react";
+import Card from "../features/card/Card";
 
-function AddCardPage() {
+const CardForm = ({
+  handleAddCard,
+  value,
+  setValue,
+  type,
+  setType,
+  validThruYear,
+  setValidThruYear,
+  validThruMonth,
+  setValidThruMonth,
+  name,
+  setName,
+  brand,
+  setBrand,
+  ccv,
+  setCcv,
+}) => {
   const inputRef = useRef(null);
-  const [value, setValue] = useState("**** **** **** ****");
-  const [type, setType] = useState("");
-  const [validThruYear, setValidThruYear] = useState("YY");
-  const [validThruMonth, setValidThruMonth] = useState("MM");
-  const [name, setName] = useState("Firstname Lastname");
-  const [brand, setBrand] = useState("Choose");
-  const [ccv, setCcv] = useState();
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   useEffect(() => {
     // registerCursorTracker itself returns an unregister destructor
     // function so you can place it here for hook component unmount
@@ -33,37 +34,8 @@ function AddCardPage() {
     });
   }, []);
 
-  const handleAddCard = (event) => {
-    event.preventDefault();
-
-    const dataBeingSent = {
-      bgColor: brand,
-      id: Date.now(),
-      cardNumber: value,
-      validThruMonth: validThruMonth.toString().padStart(2, "0"),
-      validThruYear: validThruYear,
-      name: name.toUpperCase(),
-      brand,
-      active: false,
-      ccv,
-    };
-
-    const error = validateCardData(dataBeingSent);
-
-    if (!error) {
-      // Dispatching card
-      dispatch(addCard(dataBeingSent));
-      alert("Card was added!");
-      navigate("/");
-    } else {
-      alert(`Card could not be added: ${error}`);
-    }
-  };
-
   return (
-    <main>
-      <h2>New card</h2>
-
+    <>
       {/* Preview of card */}
       <Card
         bgColor={brand}
@@ -76,7 +48,7 @@ function AddCardPage() {
       <div className="formDiv">
         <form onSubmit={handleAddCard}>
           <p>
-            Brand
+            Brand:
             <br />
             <select
               onChange={(event) => {
@@ -84,34 +56,32 @@ function AddCardPage() {
               }}
               required
             >
-              <option value="Choose">Choose a brand</option>
+              <option defaultValue="Choose">Choose a brand</option>
               <option>Gorigori</option>
               <option>Kopachromia</option>
               <option>Flow</option>
             </select>
           </p>
           <p>
-            Card Number
+            Card Number:
             <br />
             <input
               ref={inputRef}
-              value={value}
-              placeholder="**** **** **** ****"
+              defaultValue={value}
               onChange={(event) => {
-                const value = event.target.value;
-                setValue(formatCreditCard(value));
-                setType(getCreditCardType(value));
+                setValue(formatCreditCard(event.target.value));
+                setType(getCreditCardType(event.target.value));
               }}
               required
             ></input>
           </p>
           <p>
-            Valid Thru
+            Valid Thru:
             <br />
             <input
               type="number"
               id="month"
-              placeholder="MM"
+              defaultValue={validThruMonth}
               min="01"
               max="12"
               onChange={(event) => {
@@ -123,7 +93,7 @@ function AddCardPage() {
             <input
               type="number"
               id="year"
-              placeholder="YY"
+              defaultValue={validThruYear ? validThruYear : "YY"}
               min="24"
               onChange={(event) => {
                 setValidThruYear(event.target.value);
@@ -132,10 +102,11 @@ function AddCardPage() {
             ></input>
           </p>
           <p>
-            Name
+            Name:
             <br />
             <input
               type="text"
+              defaultValue={name ? name : ""}
               onChange={(event) => {
                 setName(event.target.value);
               }}
@@ -143,10 +114,11 @@ function AddCardPage() {
             ></input>
           </p>
           <p>
-            CCV
+            CCV:
             <br />
             <input
               type="number"
+              defaultValue={ccv}
               onChange={(event) => {
                 setCcv(event.target.value);
               }}
@@ -154,11 +126,13 @@ function AddCardPage() {
             ></input>
           </p>
 
-          <button type="submit">Add card</button>
+          <button type="submit">
+            {location.pathname === "/addcard" ? "Add card" : "Save"}
+          </button>
         </form>
       </div>
-    </main>
+    </>
   );
-}
+};
 
-export default AddCardPage;
+export default CardForm;

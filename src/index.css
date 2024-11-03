@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Bebas+Neue&display=swap");
 
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -20,17 +20,17 @@
 }
 
 header {
-  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(42, 42, 81, 0.723);
+  color: #73b2dd;
+  text-align: center;
+  height: px;
   padding: 1em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-header:hover {
-  filter: drop-shadow(0 0 2em #ced0ffd8);
-}
-header.react:hover {
-  filter: drop-shadow(0 0 2em #b6effffe);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -50,48 +50,49 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 p {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
+  margin: 4px;
 }
 
 h1 {
-  font-size: 1.9em;
+  font-size: 2.5em;
   line-height: 1.1;
-  color: rgb(183, 183, 183);
+  color: #73b2dd;
   margin: 0;
+  padding: 0;
+  letter-spacing: 1.5px;
 }
 
 h2 {
   text-align: left;
 }
-header {
-  background-color: rgb(42, 42, 81);
-  text-align: center;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+input,
+select {
+  margin: 4px 0px;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  margin: 8px 0px;
+  font-size: 12px;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #73b2dd;
+  color: rgba(42, 42, 81, 0.723);
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

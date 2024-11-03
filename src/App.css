@@ -14,15 +14,20 @@
 }
 
 .deleteCardBtn {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px;
   margin: 8px;
   font-size: 10px;
+  background-color: rgb(35, 35, 35);
   color: rgb(251, 138, 81);
+}
+
+.deleteCardBtn:hover {
+  background-color: rgb(66, 66, 66);
 }
 
 .addNewCardLink {
@@ -42,6 +47,16 @@
   display: flex;
   align-items: center;
   margin: 16px 0px 24px 0px;
+}
+
+.active {
+  background-color: rgb(5, 7, 25);
+}
+
+.buttonDiv {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .formDiv {
