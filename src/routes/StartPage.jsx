@@ -16,14 +16,14 @@ function Startpage() {
         .filter((card) => card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Card {...card} />
+            <Card {...card} className="active" />
             <button type="button" className="deleteCardBtn hidden">
               <FaTrash />
             </button>
           </div>
         ))}
-      {cards.length === 2 ? <h3>Unactive card</h3> : ""}
-      {cards.length > 2 ? <h3>Unactive cards</h3> : ""}
+      {cards.length === 2 ? <h3>Inactive card</h3> : ""}
+      {cards.length > 2 ? <h3>Inactive cards</h3> : ""}
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
