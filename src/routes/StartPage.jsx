@@ -1,9 +1,9 @@
 import Card from "../features/card/Card";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaRegCreditCard } from "react-icons/fa";
+
 import { deleteCard } from "../features/card/cardSlice";
-import EditCardPage from "./EditCardPage";
 
 function Startpage() {
   const navigate = useNavigate();
@@ -11,47 +11,25 @@ function Startpage() {
   const cards = useSelector((store) => store.cardReducer.cards);
   return (
     <main>
-      <h3>Active card</h3>
+      {cards ? <h3>Active card</h3> : "No cards registered!"}
       {cards
         .filter((card) => card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Card
-              key={i}
-              bgColor={card.bgColor}
-              cardNumber={card.cardNumber}
-              validThruMonth={card.validThruMonth}
-              validThruYear={card.validThruYear}
-              name={card.name}
-              brand={card.brand}
-              active={card.active}
-            />
-            <button
-              type="button"
-              className="deleteCardBtn hidden"
-              onClick={() => {
-                dispatch(deleteCard(card.id));
-              }}
-            >
+            <Card {...card} className="active" />
+            <button type="button" className="deleteCardBtn hidden">
               <FaTrash />
             </button>
           </div>
         ))}
-      <h3>Unactive cards</h3>
+      {cards.length === 2 ? <h3>Inactive card</h3> : ""}
+      {cards.length > 2 ? <h3>Inactive cards</h3> : ""}
       {cards
         .filter((card) => !card.active)
         .map((card, i) => (
           <div className="cardBtnContainer" key={i}>
-            <Link to={`/card/${card.id}`} state={cards}>
-              <Card
-                bgColor={card.bgColor}
-                cardNumber={card.cardNumber}
-                validThruMonth={card.validThruMonth}
-                validThruYear={card.validThruYear}
-                name={card.name}
-                brand={card.brand}
-                active={card.active}
-              />
+            <Link to={`/card/${card.id}`}>
+              <Card {...card} />
             </Link>
             <button
               type="button"
@@ -60,23 +38,23 @@ function Startpage() {
                 dispatch(deleteCard(card.id));
               }}
             >
-              <FaTrash />
+              <FaTrash size="16px" />
             </button>
           </div>
         ))}
-      <button
-        className="addNewCardLink"
-        type="button"
-        onClick={() => {
-          if (cards.length === 4) {
-            alert("You can only have 4 cards registered. Delete a card!");
-          } else {
-            navigate("/addcard");
-          }
-        }}
-      >
-        Add a card
-      </button>
+      <div className="buttonDiv">
+        <button
+          onClick={() => {
+            if (cards.length === 4) {
+              alert("You can only have 4 cards registered. Delete a card!");
+            } else {
+              navigate("/addcard");
+            }
+          }}
+        >
+          Add new card
+        </button>
+      </div>
     </main>
   );
 }

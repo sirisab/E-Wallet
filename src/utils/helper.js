@@ -18,8 +18,6 @@ export function validateCardData(data) {
     0
   );
 
-  console.log("data.validThru:", data.validThru);
-
   if (validThruDate < thisDate) {
     return "The card is expired";
   }
