@@ -4,34 +4,6 @@
   padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .startPage {
   display: flex;
   flex-direction: column;
@@ -42,21 +14,26 @@
 }
 
 .deleteCardBtn {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px;
   margin: 8px;
   font-size: 10px;
+  background-color: rgb(35, 35, 35);
+  color: rgb(251, 138, 81);
+}
+
+.deleteCardBtn:hover {
+  background-color: rgb(66, 66, 66);
 }
 
 .addNewCardLink {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -69,6 +46,16 @@
   display: flex;
   align-items: center;
   margin: 16px 0px 24px 0px;
+}
+
+/* .active {
+  box-shadow: 0px 0px 10px red;
+} */
+
+.buttonDiv {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .formDiv {

@@ -1,18 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Bebas+Neue&family=Lexend:wght@100..900&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
+  font-weight: 400; */
+  /* font-family: "Shippori Antique B1", sans-serif;
   font-weight: 400;
-
+  font-style: normal; */
+  font-family: 'Lexend', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  /* color: rgba(255, 255, 255, 0.87); */
+  color: #c5e5fb;
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(42, 42, 81, 0.723);
+  color: #73b2dd;
+  text-align: center;
+  height: 20px;
+  padding: 1em;
+  font-family: 'Lexend', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 body {
@@ -32,51 +54,56 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 p {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
+  margin: 4px;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 1.5em;
   line-height: 1.1;
-  color: rgb(183, 183, 183);
+  color: #73b2dd;
   margin: 0;
+  padding: 0;
+  /* letter-spacing: 1.5px; */
 }
 
 h2 {
   text-align: left;
 }
-header {
-  background-color: rgb(42, 42, 81);
-  text-align: center;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+input,
+select {
+  margin: 4px 0px;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  margin: 8px 0px;
+  font-size: 12px;
+  font-weight: 800;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #73b2dd;
+  color: rgba(22, 22, 43, 0.723);
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.site-wrapper {
+  width: 100vw;
 }
 
 @media (prefers-color-scheme: light) {
@@ -90,8 +117,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.site-wrapper {
-  width: 100vw;
 }
