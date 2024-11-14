@@ -1,12 +1,12 @@
-import styles from "./Card.module.css";
-import chip from "../../../src/assets/icons8-chip-card-40.png";
+import styles from './Card.module.css';
+import chip from '../../../src/assets/icons8-chip-card-40.png';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 const Card = (
   {
     bgColor,
-    brand,
+    vendor,
     cardNumber,
     validThruMonth,
     validThruYear,
@@ -21,8 +21,8 @@ const Card = (
   return (
     <div className={className}>
       <div className={`${styles.card} ${styles[bgColor]}`}>
-        <div className={styles.brand}>
-          <strong>{brand}</strong>
+        <div className={styles.vendor}>
+          <strong>{vendor}</strong>
         </div>
         <div className={styles.chip}>
           <img src={chip} />

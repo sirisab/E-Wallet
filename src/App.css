@@ -48,10 +48,6 @@
   margin: 16px 0px 24px 0px;
 }
 
-/* .active {
-  box-shadow: 0px 0px 10px red;
-} */
-
 .buttonDiv {
   display: flex;
   width: 100%;
@@ -65,9 +61,9 @@
   justify-content: start;
   margin: 10px 0px;
 
-  #year,
-  #month {
-    width: 40px;
+  #validThruMonth,
+  #validThruYear {
+    width: 20px;
   }
 }
 

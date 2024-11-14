@@ -1,25 +1,24 @@
-import { useDispatch } from "react-redux";
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   DefaultCreditCardDelimiter,
   formatCreditCard,
   getCreditCardType,
   registerCursorTracker,
-} from "cleave-zen";
-import { validateCardData } from "../utils/helper";
-import Card from "../features/card/Card";
-import { addCard } from "../features/card/cardSlice";
-import CardForm from "../components/CardForm";
+} from 'cleave-zen';
+import { validateCardData } from '../utils/helper';
+import Card from '../features/card/Card';
+import { addCard } from '../features/card/cardSlice';
 
 function AddCardPage() {
   const inputRef = useRef(null);
-  const [value, setValue] = useState("**** **** **** ****");
-  const [type, setType] = useState("");
-  const [validThruYear, setValidThruYear] = useState("YY");
-  const [validThruMonth, setValidThruMonth] = useState("MM");
-  const [name, setName] = useState("Firstname Lastname");
-  const [brand, setBrand] = useState("Choose");
+  const [value, setValue] = useState('');
+  const [type, setType] = useState('');
+  const [validThruYear, setValidThruYear] = useState('YY');
+  const [validThruMonth, setValidThruMonth] = useState('MM');
+  const [name, setName] = useState('Firstname Lastname');
+  const [vendor, setVendor] = useState('Choose');
   const [ccv, setCcv] = useState();
 
   const dispatch = useDispatch();
@@ -38,13 +37,13 @@ function AddCardPage() {
     event.preventDefault();
 
     const dataBeingSent = {
-      bgColor: brand,
       id: Date.now(),
+      bgColor: vendor,
       cardNumber: value,
-      validThruMonth: validThruMonth.toString().padStart(2, "0"),
+      validThruMonth: validThruMonth.toString().padStart(2, '0'),
       validThruYear: validThruYear,
       name: name.toUpperCase(),
-      brand,
+      vendor,
       active: false,
       ccv,
     };
@@ -54,8 +53,8 @@ function AddCardPage() {
     if (!error) {
       // Dispatching card
       dispatch(addCard(dataBeingSent));
-      alert("Card was added!");
-      navigate("/");
+      alert('Card was added!');
+      navigate('/');
     } else {
       alert(`Card could not be added: ${error}`);
     }
@@ -67,25 +66,25 @@ function AddCardPage() {
 
       {/* Preview of card */}
       <Card
-        bgColor={brand}
+        bgColor={vendor}
         name={name?.toUpperCase()}
-        brand={brand}
+        vendor={vendor}
         cardNumber={value}
-        validThruMonth={validThruMonth?.toString().padStart(2, "0")}
+        validThruMonth={validThruMonth?.toString().padStart(2, '0')}
         validThruYear={validThruYear}
       />
-      <div className="formDiv">
+      <div className='formDiv'>
         <form onSubmit={handleAddCard}>
           <p>
-            Brand
+            Vendor
             <br />
             <select
               onChange={(event) => {
-                setBrand(event.target.value);
+                setVendor(event.target.value);
               }}
               required
             >
-              <option value="Choose">Choose a brand</option>
+              <option value='Choose'>Choose a vendor</option>
               <option>Gorigori</option>
               <option>Kopachromia</option>
               <option>Flow</option>
@@ -97,7 +96,7 @@ function AddCardPage() {
             <input
               ref={inputRef}
               value={value}
-              placeholder="**** **** **** ****"
+              placeholder='**** **** **** ****'
               onChange={(event) => {
                 const value = event.target.value;
                 setValue(formatCreditCard(value));
@@ -110,22 +109,22 @@ function AddCardPage() {
             Valid Thru
             <br />
             <input
-              type="number"
-              id="month"
-              placeholder="MM"
-              min="01"
-              max="12"
+              type='number'
+              id='validThruMonth'
+              placeholder='MM'
+              min='01'
+              max='12'
               onChange={(event) => {
                 setValidThruMonth(event.target.value);
               }}
               required
-            ></input>{" "}
-            /{" "}
+            ></input>{' '}
+            /{' '}
             <input
-              type="number"
-              id="year"
-              placeholder="YY"
-              min="24"
+              type='number'
+              id='validThruYear'
+              placeholder='YY'
+              min='24'
               onChange={(event) => {
                 setValidThruYear(event.target.value);
               }}
@@ -136,7 +135,7 @@ function AddCardPage() {
             Name
             <br />
             <input
-              type="text"
+              type='text'
               onChange={(event) => {
                 setName(event.target.value);
               }}
@@ -147,7 +146,7 @@ function AddCardPage() {
             CCV
             <br />
             <input
-              type="number"
+              type='number'
               onChange={(event) => {
                 setCcv(event.target.value);
               }}
@@ -155,7 +154,7 @@ function AddCardPage() {
             ></input>
           </p>
 
-          <button type="submit">Add card</button>
+          <button type='submit'>Add card</button>
         </form>
       </div>
     </main>
