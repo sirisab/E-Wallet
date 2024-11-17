@@ -1,59 +1,40 @@
-import {
-  formatCreditCard,
-  getCreditCardType,
-  registerCursorTracker,
-  DefaultCreditCardDelimiter,
-} from 'cleave-zen';
-import { useRef, useEffect } from 'react';
+import { useState } from 'react';
 import Card from '../features/card/Card';
 
-const CardForm = ({
-  name,
-  setName,
-  vendor,
-  setVendor,
-  validThruMonth,
-  setValidThruMonth,
-  validThruYear,
-  setValidThruYear,
-  handleUpdateCard,
-  value,
-  setValue,
-  ccv,
-  updateCcv,
-}) => {
-  const inputRef = useRef(null);
-  useEffect(() => {
-    // registerCursorTracker itself returns an unregister destructor
-    // function so you can place it here for hook component unmount
-    return registerCursorTracker({
-      input: inputRef.current,
-      delimiter: DefaultCreditCardDelimiter,
+function CardForm({ initialCardData, onSubmit }) {
+  const [cardData, setCardData] = useState(initialCardData || {});
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    setCardData({
+      ...cardData,
+      [id]: id === 'cardHolder' ? value.toUpperCase() : value,
     });
-  }, []);
+  };
+
+  const handleSubmit = (event) => {
+    console.log('handleSubmit');
+    event.preventDefault();
+    onSubmit(cardData);
+  };
 
   return (
     <>
       {/* Preview of card */}
       <Card
-        bgColor={vendor}
-        name={name}
-        vendor={vendor}
-        cardNumber={value}
-        validThruMonth={validThruMonth?.toString().padStart(2, '0')}
-        validThruYear={validThruYear}
+        cardHolder={cardData?.cardHolder}
+        vendor={cardData?.vendor}
+        cardNumber={cardData?.cardNumber}
+        validThruMonth={cardData?.validThruMonth?.toString().padStart(2, '0')}
+        validThruYear={cardData?.validThruYear}
       />
       <div className='formDiv'>
-        <form onSubmit={handleUpdateCard}>
+        <form onSubmit={handleSubmit}>
           <p>
             Vendor:
             <br />
-            <select
-              onChange={(event) => {
-                setVendor(event.target.value);
-              }}
-              required
-            >
+            <select id='vendor' onChange={handleChange} required>
               <option defaultValue='Choose'>Choose a vendor</option>
               <option>Gorigori</option>
               <option>Kopachromia</option>
@@ -64,13 +45,9 @@ const CardForm = ({
             Card Number:
             <br />
             <input
-              ref={inputRef}
-              value={value}
-              onChange={(event) => {
-                const value = event.target.value;
-                formatCreditCard(value);
-                getCreditCardType(value);
-              }}
+              id='cardNumber'
+              value={cardData.cardNumber}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -80,23 +57,21 @@ const CardForm = ({
             <input
               type='number'
               id='validThruMonth'
-              defaultValue={validThruMonth}
+              defaultValue={cardData?.validThruMonth || ''}
               min='01'
               max='12'
-              onChange={(event) => {
-                setValidThruMonth(event.target.value);
-              }}
+              onChange={handleChange}
               required
             ></input>{' '}
             /{' '}
             <input
               type='number'
               id='validThruYear'
-              defaultValue={validThruYear ? validThruYear : 'YY'}
+              defaultValue={
+                cardData.validThruYear ? cardData.validThruYear : 'YY'
+              }
               min='24'
-              onChange={(event) => {
-                setValidThruYear(event.target.value);
-              }}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -104,11 +79,10 @@ const CardForm = ({
             Name:
             <br />
             <input
+              id='cardHolder'
               type='text'
-              defaultValue={name ? name : ''}
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
+              defaultValue={cardData.cardHolder ? cardData.cardHolder : ''}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -116,11 +90,10 @@ const CardForm = ({
             CCV:
             <br />
             <input
+              id='ccv'
               type='number'
-              defaultValue={ccv}
-              onChange={(event) => {
-                updateCcv(event.target.value);
-              }}
+              defaultValue={cardData.ccv ? cardData.ccv : ''}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -132,6 +105,6 @@ const CardForm = ({
       </div>
     </>
   );
-};
+}
 
 export default CardForm;

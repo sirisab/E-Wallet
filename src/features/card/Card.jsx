@@ -10,7 +10,7 @@ const Card = (
     cardNumber,
     validThruMonth,
     validThruYear,
-    name,
+    cardHolder,
     active,
     className,
   },
@@ -20,7 +20,7 @@ const Card = (
 
   return (
     <div className={className}>
-      <div className={`${styles.card} ${styles[bgColor]}`}>
+      <div className={`${styles.card} ${styles[vendor]}`}>
         <div className={styles.vendor}>
           <strong>{vendor}</strong>
         </div>
@@ -32,7 +32,7 @@ const Card = (
         <div className={styles.validThru}>
           <span>VALID THRU:</span> {validThruMonth}/{validThruYear}
         </div>
-        <div className={styles.name}>{name}</div>
+        <div className={styles.name}>{cardHolder}</div>
       </div>
     </div>
   );
