@@ -40,7 +40,9 @@ const cardSlice = createSlice({
     updateCard: (state, action) => {
       return {
         ...state,
-        ...action.payload,
+        cards: state.cards.map((card) =>
+          card.id === action.payload.id ? action.payload : card
+        ),
       };
     },
   },

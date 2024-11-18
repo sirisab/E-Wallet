@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 const Card = (
   {
-    bgColor,
     vendor,
     cardNumber,
     validThruMonth,

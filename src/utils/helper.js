@@ -1,8 +1,8 @@
 export function validateCardData(data) {
-  // let removeSpacesInput = data.cardNumber.replace(/ /g, "");
-
+  let removeSpacesInput = data.cardNumber.replace(/ /g, '');
+  console.log(removeSpacesInput);
   //   Fältets kortnummer måste innehålla 16 siffror.
-  if (data.cardNumber.length !== 16) {
+  if (removeSpacesInput.length !== 16) {
     return `Card number must consist of 16 digits`;
   }
 

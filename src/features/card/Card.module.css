@@ -3,8 +3,8 @@
 
 .card {
   color: rgb(214, 230, 255);
-  width: 250px;
-  max-width: 260px;
+  width: 245px;
+  max-width: 245px;
   max-height: 160px;
   min-height: 160px;
   padding: 12px 30px;
@@ -62,7 +62,7 @@
   background: repeating-linear-gradient(
     0deg,
     #d80707,
-    #d80707 100px,
+    #d80707 100gpx,
     #edb3ff 62px,
     #edb3ff 640px
   );

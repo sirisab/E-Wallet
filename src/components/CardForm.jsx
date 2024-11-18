@@ -14,7 +14,6 @@ function CardForm({ initialCardData, onSubmit }) {
   };
 
   const handleSubmit = (event) => {
-    console.log('handleSubmit');
     event.preventDefault();
     onSubmit(cardData);
   };
@@ -23,11 +22,13 @@ function CardForm({ initialCardData, onSubmit }) {
     <>
       {/* Preview of card */}
       <Card
-        cardHolder={cardData?.cardHolder}
-        vendor={cardData?.vendor}
-        cardNumber={cardData?.cardNumber}
-        validThruMonth={cardData?.validThruMonth?.toString().padStart(2, '0')}
-        validThruYear={cardData?.validThruYear}
+        cardHolder={cardData?.cardHolder || 'FIRSTNAME LASTNAME'}
+        vendor={cardData?.vendor || 'Flow'}
+        cardNumber={cardData?.cardNumber || '**** **** **** ****'}
+        validThruMonth={
+          cardData?.validThruMonth?.toString().padStart(2, '0') || 'MM'
+        }
+        validThruYear={cardData?.validThruYear || 'YY'}
       />
       <div className='formDiv'>
         <form onSubmit={handleSubmit}>

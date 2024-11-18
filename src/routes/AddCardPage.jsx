@@ -7,6 +7,7 @@ import CardForm from '../components/CardForm';
 
 function AddCardPage() {
   const cardData = {
+    id: Date.now(),
     vendor: '',
     cardNumber: '',
     validThruMonth: '',

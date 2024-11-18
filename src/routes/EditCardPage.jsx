@@ -13,16 +13,8 @@ function EditCardPage() {
 
   let cardData = cards.find((card) => card.id == cardId);
 
-  // const [value, setValue] = useState('**** **** **** ****');
-  // const [validThruYear, setValidThruYear] = useState();
-  // const [validThruMonth, setValidThruMonth] = useState();
-  // const [name, setName] = useState();
-  // const [vendor, setVendor] = useState();
-  // const [ccv, setCcv] = useState();
-  // const [cardData, setCardData] = useState(initialCardData);
-
-  const handleUpdateCard = (event) => {
-    event.preventDefault();
+  const handleUpdateCard = (cardData) => {
+    // event.preventDefault();
 
     const error = validateCardData(cardData);
 
@@ -39,22 +31,7 @@ function EditCardPage() {
   return (
     <main>
       <h2>Edit card</h2>
-      <CardForm
-        initialCardData={cardData}
-
-        // value={card.cardNumber}
-        // setValue={setValue}
-        // name={card.name}
-        // setName={setName}
-        // vendor={card.vendor}
-        // setVendor={setVendor}
-        // validThruMonth={card.validThruMonth}
-        // setValidThruMonth={setValidThruMonth}
-        // validThruYear={card.validThruYear}
-        // setValidThruYear={setValidThruYear}
-        // handleUpdateCard={handleUpdateCard}
-        // updateCcv={updateCcv}
-      />
+      <CardForm initialCardData={cardData} onSubmit={handleUpdateCard} />
     </main>
   );
 }
