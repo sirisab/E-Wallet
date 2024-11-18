@@ -1,9 +1,8 @@
 export function validateCardData(data) {
-  let removeSpacesInput = data.cardNumber.replace(/ /g, "");
-
-  //   Fältet kortnummer måste innehålla 16 siffror.
+  let removeSpacesInput = data.cardNumber.replace(/ /g, '');
+  //   Fältets kortnummer måste innehålla 16 siffror.
   if (removeSpacesInput.length !== 16) {
-    return "Card number must consist of 16 digits";
+    return `Card number must consist of 16 digits`;
   }
 
   // Utgångsdatum får inte vara ett datum som redan passerat.
@@ -19,12 +18,12 @@ export function validateCardData(data) {
   );
 
   if (validThruDate < thisDate) {
-    return "The card is expired";
+    return 'The card is expired';
   }
 
   // Namnet får inte innehålla siffror.
   const letters = /^[A-Öa-ö ]+$/;
-  if (!data.name.match(letters)) {
-    return "Name cannot include numbers";
+  if (!data.cardHolder.match(letters)) {
+    return 'Name cannot include numbers';
   }
 }

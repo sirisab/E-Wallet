@@ -1,62 +1,42 @@
-import {
-  formatCreditCard,
-  getCreditCardType,
-  registerCursorTracker,
-  DefaultCreditCardDelimiter,
-} from "cleave-zen";
-import { useRef, useEffect } from "react";
-import Card from "../features/card/Card";
+import { useState } from 'react';
+import Card from '../features/card/Card';
 
-const CardForm = ({
-  handleAddCard,
-  value,
-  setValue,
-  type,
-  setType,
-  validThruYear,
-  setValidThruYear,
-  validThruMonth,
-  setValidThruMonth,
-  name,
-  setName,
-  brand,
-  setBrand,
-  ccv,
-  setCcv,
-}) => {
-  const inputRef = useRef(null);
-  useEffect(() => {
-    // registerCursorTracker itself returns an unregister destructor
-    // function so you can place it here for hook component unmount
-    return registerCursorTracker({
-      input: inputRef.current,
-      delimiter: DefaultCreditCardDelimiter,
+function CardForm({ initialCardData, onSubmit }) {
+  const [cardData, setCardData] = useState(initialCardData || {});
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    setCardData({
+      ...cardData,
+      [id]: id === 'cardHolder' ? value.toUpperCase() : value,
     });
-  }, []);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(cardData);
+  };
 
   return (
     <>
       {/* Preview of card */}
       <Card
-        bgColor={brand}
-        name={name?.toUpperCase()}
-        brand={brand}
-        cardNumber={value}
-        validThruMonth={validThruMonth?.toString().padStart(2, "0")}
-        validThruYear={validThruYear}
+        cardHolder={cardData?.cardHolder || 'FIRSTNAME LASTNAME'}
+        vendor={cardData?.vendor || 'Flow'}
+        cardNumber={cardData?.cardNumber || '**** **** **** ****'}
+        validThruMonth={
+          cardData?.validThruMonth?.toString().padStart(2, '0') || 'MM'
+        }
+        validThruYear={cardData?.validThruYear || 'YY'}
       />
-      <div className="formDiv">
-        <form onSubmit={handleAddCard}>
+      <div className='formDiv'>
+        <form onSubmit={handleSubmit}>
           <p>
-            Brand:
+            Vendor:
             <br />
-            <select
-              onChange={(event) => {
-                setBrand(event.target.value);
-              }}
-              required
-            >
-              <option defaultValue="Choose">Choose a brand</option>
+            <select id='vendor' onChange={handleChange} required>
+              <option defaultValue='Choose'>Choose a vendor</option>
               <option>Gorigori</option>
               <option>Kopachromia</option>
               <option>Flow</option>
@@ -66,12 +46,9 @@ const CardForm = ({
             Card Number:
             <br />
             <input
-              ref={inputRef}
-              defaultValue={value}
-              onChange={(event) => {
-                setValue(formatCreditCard(event.target.value));
-                setType(getCreditCardType(event.target.value));
-              }}
+              id='cardNumber'
+              value={cardData.cardNumber}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -79,25 +56,23 @@ const CardForm = ({
             Valid Thru:
             <br />
             <input
-              type="number"
-              id="month"
-              defaultValue={validThruMonth}
-              min="01"
-              max="12"
-              onChange={(event) => {
-                setValidThruMonth(event.target.value);
-              }}
+              type='number'
+              id='validThruMonth'
+              defaultValue={cardData?.validThruMonth || ''}
+              min='01'
+              max='12'
+              onChange={handleChange}
               required
-            ></input>{" "}
-            /{" "}
+            ></input>{' '}
+            /{' '}
             <input
-              type="number"
-              id="year"
-              defaultValue={validThruYear ? validThruYear : "YY"}
-              min="24"
-              onChange={(event) => {
-                setValidThruYear(event.target.value);
-              }}
+              type='number'
+              id='validThruYear'
+              defaultValue={
+                cardData.validThruYear ? cardData.validThruYear : 'YY'
+              }
+              min='24'
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -105,11 +80,10 @@ const CardForm = ({
             Name:
             <br />
             <input
-              type="text"
-              defaultValue={name ? name : ""}
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
+              id='cardHolder'
+              type='text'
+              defaultValue={cardData.cardHolder ? cardData.cardHolder : ''}
+              onChange={handleChange}
               required
             ></input>
           </p>
@@ -117,22 +91,20 @@ const CardForm = ({
             CCV:
             <br />
             <input
-              type="number"
-              defaultValue={ccv}
-              onChange={(event) => {
-                setCcv(event.target.value);
-              }}
+              id='ccv'
+              type='number'
+              defaultValue={cardData.ccv ? cardData.ccv : ''}
+              onChange={handleChange}
               required
             ></input>
           </p>
-
-          <button type="submit">
-            {location.pathname === "/addcard" ? "Add card" : "Save"}
+          <button type='submit'>
+            {location.pathname === '/addcard' ? 'Add card' : 'Save'}
           </button>
         </form>
       </div>
     </>
   );
-};
+}
 
 export default CardForm;

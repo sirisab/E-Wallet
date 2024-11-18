@@ -1,36 +1,60 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import Card from "../features/card/Card";
-import { addCard } from "../features/card/cardSlice";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { validateCardData } from "../utils/helper";
-import CardForm from "../components/CardForm";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { activateCard, updateCard } from '../features/card/cardSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { validateCardData } from '../utils/helper';
+import CardForm from '../components/CardForm';
+import { deleteCard } from '../features/card/cardSlice';
 
 function EditCardPage() {
-  const [value, setValue] = useState("**** **** **** ****");
-  const [validThruYear, setValidThruYear] = useState();
-  const [validThruMonth, setValidThruMonth] = useState();
-  const [name, setName] = useState();
-  const [brand, setBrand] = useState();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { cardId } = useParams();
   const cards = useSelector((store) => store.cardReducer.cards);
 
-  let card = cards.find((card) => card.id == cardId);
+  let cardData = cards.find((card) => card.id == cardId);
+
+  const handleDelete = () => {
+    if (confirm('Delete card?')) {
+      dispatch(deleteCard(cardData.id));
+      navigate('/');
+    }
+  };
+
+  const handleActivate = () => {
+    dispatch(activateCard(cardData));
+    alert('Card was activated!');
+    navigate('/');
+  };
+
+  const handleUpdateCard = (cardData) => {
+    const error = validateCardData(cardData);
+
+    if (!error) {
+      // Dispatching card
+      dispatch(updateCard(cardData));
+      alert('Card was updated!');
+      navigate('/');
+    } else {
+      alert(`Card could not be updated: ${error}`);
+    }
+  };
 
   return (
     <main>
+      <button id='activateBtn' onClick={handleActivate}>
+        Activate Card
+      </button>
+      <button
+        id='deleteBtn'
+        onClick={() => {
+          handleDelete();
+        }}
+      >
+        Delete Card
+      </button>
       <h2>Edit card</h2>
-      <CardForm
-        cardNumber={card.value}
-        setValue={card.setValue}
-        name={card.name}
-        brand={card.brand}
-        validThruMonth={card.validThruMonth}
-        validThruYear={card.validThruYear}
-      />
+      <CardForm initialCardData={cardData} onSubmit={handleUpdateCard} />
     </main>
   );
 }
