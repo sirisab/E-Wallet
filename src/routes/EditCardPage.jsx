@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { updateCard } from '../features/card/cardSlice';
+
+import { activateCard, updateCard } from '../features/card/cardSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import { validateCardData } from '../utils/helper';
 import CardForm from '../components/CardForm';
+import { deleteCard } from '../features/card/cardSlice';
 
 function EditCardPage() {
   const dispatch = useDispatch();
@@ -13,9 +14,20 @@ function EditCardPage() {
 
   let cardData = cards.find((card) => card.id == cardId);
 
-  const handleUpdateCard = (cardData) => {
-    // event.preventDefault();
+  const handleDelete = () => {
+    if (confirm('Delete card?')) {
+      dispatch(deleteCard(cardData.id));
+      navigate('/');
+    }
+  };
 
+  const handleActivate = () => {
+    dispatch(activateCard(cardData));
+    alert('Card was activated!');
+    navigate('/');
+  };
+
+  const handleUpdateCard = (cardData) => {
     const error = validateCardData(cardData);
 
     if (!error) {
@@ -30,6 +42,17 @@ function EditCardPage() {
 
   return (
     <main>
+      <button id='activateBtn' onClick={handleActivate}>
+        Activate Card
+      </button>
+      <button
+        id='deleteBtn'
+        onClick={() => {
+          handleDelete();
+        }}
+      >
+        Delete Card
+      </button>
       <h2>Edit card</h2>
       <CardForm initialCardData={cardData} onSubmit={handleUpdateCard} />
     </main>

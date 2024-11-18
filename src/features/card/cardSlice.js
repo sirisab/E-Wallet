@@ -14,6 +14,7 @@ const cardSlice = createSlice({
         cardHolder: 'KLARA BACKSTRÖM',
         vendor: 'Kopachromia',
         active: true,
+        ccv: 123,
       },
       {
         id: 54,
@@ -24,6 +25,7 @@ const cardSlice = createSlice({
         cardHolder: 'MAJA BACKSTRÖM',
         vendor: 'Flow',
         active: false,
+        ccv: 234,
       },
     ],
   },
@@ -45,9 +47,20 @@ const cardSlice = createSlice({
         ),
       };
     },
+    activateCard: (state, action) => {
+      return {
+        ...state,
+        cards: state.cards.map((card) => {
+          return card.id === action.payload.id
+            ? { ...card, active: true }
+            : { ...card, active: false };
+        }),
+      };
+    },
   },
 });
 
 export default cardSlice.reducer;
 
-export const { addCard, deleteCard, updateCard } = cardSlice.actions;
+export const { activateCard, addCard, deleteCard, updateCard } =
+  cardSlice.actions;

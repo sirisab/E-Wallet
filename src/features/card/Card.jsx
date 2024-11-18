@@ -31,7 +31,7 @@ const Card = (
         <div className={styles.validThru}>
           <span>VALID THRU:</span> {validThruMonth}/{validThruYear}
         </div>
-        <div className={styles.name}>{cardHolder}</div>
+        <div className={styles.cardHolder}>{cardHolder}</div>
       </div>
     </div>
   );
