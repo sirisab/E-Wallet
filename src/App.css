@@ -67,6 +67,14 @@
   }
 }
 
+#deleteBtn {
+  background-color: orange;
+}
+
+#activateBtn {
+  background-color: rgb(161, 149, 243);
+}
+
 .hidden {
   visibility: hidden;
 }

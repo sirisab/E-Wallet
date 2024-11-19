@@ -9,7 +9,7 @@ function Startpage() {
   const navigate = useNavigate();
   let dispatch = useDispatch();
   const cards = useSelector((store) => store.cardReducer.cards);
-  console.log(cards);
+
   return (
     <main>
       {cards ? <h3>Active card</h3> : 'No cards registered!'}
