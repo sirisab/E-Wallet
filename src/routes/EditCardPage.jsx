@@ -27,12 +27,12 @@ function EditCardPage() {
     navigate('/');
   };
 
-  const handleUpdateCard = (cardData) => {
-    const error = validateCardData(cardData);
+  const handleUpdateCard = (editedCard) => {
+    const error = validateCardData(editedCard);
 
     if (!error) {
       // Dispatching card
-      dispatch(updateCard(cardData));
+      dispatch(updateCard(editedCard));
       alert('Card was updated!');
       navigate('/');
     } else {

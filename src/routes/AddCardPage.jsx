@@ -14,15 +14,13 @@ function AddCardPage() {
     validThruYear: '',
     cardHolder: '',
     ccv: '',
-    active: false,
+    isActive: false,
   };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleAddCard = (newCard) => {
-    // event.preventDefault();
-    console.log('handleAddCard');
     const error = validateCardData(newCard);
 
     if (!error) {

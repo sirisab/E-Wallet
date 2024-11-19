@@ -9,7 +9,15 @@ function CardForm({ initialCardData, onSubmit }) {
 
     setCardData({
       ...cardData,
-      [id]: id === 'cardHolder' ? value.toUpperCase() : value,
+      // [id]: id === 'cardHolder' ? value.toUpperCase() : value,
+      [id]:
+        id === 'cardNumber'
+          ? value
+              .replace(/\D/g, '')
+              // .slice(0, 16)
+              .replace(/(.{4})/g, '$1 ')
+              .trim()
+          : value,
     });
   };
 
@@ -22,11 +30,13 @@ function CardForm({ initialCardData, onSubmit }) {
     <>
       {/* Preview of card */}
       <Card
-        cardHolder={cardData?.cardHolder || 'FIRSTNAME LASTNAME'}
-        vendor={cardData?.vendor || 'Flow'}
+        cardHolder={cardData?.cardHolder.toUpperCase() || 'FIRSTNAME LASTNAME'}
+        vendor={cardData?.vendor || 'Choose'}
         cardNumber={cardData?.cardNumber || '**** **** **** ****'}
         validThruMonth={
-          cardData?.validThruMonth?.toString().padStart(2, '0') || 'MM'
+          cardData?.validThruMonth
+            ? cardData.validThruMonth.toString().padStart(2, '0')
+            : 'MM'
         }
         validThruYear={cardData?.validThruYear || 'YY'}
       />
@@ -47,6 +57,8 @@ function CardForm({ initialCardData, onSubmit }) {
             <br />
             <input
               id='cardNumber'
+              type='text'
+              maxLength='19'
               value={cardData.cardNumber}
               onChange={handleChange}
               required
@@ -82,7 +94,9 @@ function CardForm({ initialCardData, onSubmit }) {
             <input
               id='cardHolder'
               type='text'
-              defaultValue={cardData.cardHolder ? cardData.cardHolder : ''}
+              value={
+                cardData?.cardHolder ? cardData.cardHolder.toUpperCase() : ''
+              }
               onChange={handleChange}
               required
             ></input>
