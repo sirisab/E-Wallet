@@ -31,7 +31,7 @@ function CardForm({ initialCardData, onSubmit }) {
       {/* Preview of card */}
       <Card
         cardHolder={cardData?.cardHolder.toUpperCase() || 'FIRSTNAME LASTNAME'}
-        vendor={cardData?.vendor || 'Flow'}
+        vendor={cardData?.vendor || 'Choose'}
         cardNumber={cardData?.cardNumber || '**** **** **** ****'}
         validThruMonth={
           cardData?.validThruMonth

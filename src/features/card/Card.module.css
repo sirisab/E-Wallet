@@ -60,9 +60,9 @@
 
 .Gorigori {
   background: repeating-linear-gradient(
-    10deg,
+    0deg,
     #d80707,
-    #d80707 100gpx,
+    #d80707 100px,
     #edb3ff 62px,
     #edb3ff 640px
   );
@@ -72,7 +72,7 @@
     font-size: 30px;
     font-weight: 400;
     font-style: normal;
-    color: rgb(255, 128, 0);
+    color: #d80707;
   }
 }
 
@@ -113,9 +113,15 @@
 }
 
 .Choose {
-  background-color: gray;
+  background: repeating-linear-gradient(
+    0deg,
+    #7e7e7e,
+    #7e7e7e 40px,
+    #4d4d4d 120px,
+    #4d4d4d 250px
+  );
   text-shadow: none;
   .vendor {
-    color: gray;
+    color: #4d4d4d;
   }
 }
