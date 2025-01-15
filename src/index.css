@@ -39,7 +39,8 @@ body {
 }
 
 main {
-  margin: 24px;
+  /* margin: 24px; */
+  margin: 0 auto;
 }
 
 a {

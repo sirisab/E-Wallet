@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .card {
   padding: 2em;
 }
@@ -28,6 +29,11 @@
 
 .deleteCardBtn:hover {
   background-color: rgb(66, 66, 66);
+}
+
+.add-card-div {
+  margin: 0 auto;
+  width: 80%;
 }
 
 .addNewCardLink {
