@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validateCardData } from '../utils/helper';
 import { addCard } from '../features/card/cardSlice';
@@ -35,9 +34,11 @@ function AddCardPage() {
 
   return (
     <main>
-      <h2>New card</h2>
+      <div className='add-card-div'>
+        <h2>New card</h2>
 
-      <CardForm initialCardData={cardData} onSubmit={handleAddCard} />
+        <CardForm initialCardData={cardData} onSubmit={handleAddCard} />
+      </div>
     </main>
   );
 }
