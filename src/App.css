@@ -10,10 +10,6 @@
   align-items: center;
 }
 
-.card {
-  padding: 2em;
-}
-
 .deleteCardBtn {
   width: 35px;
   height: 35px;
@@ -21,19 +17,14 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
-  margin: 6px;
+  margin: 0px 0px 0px 8px;
   font-size: 10px;
-  background-color: rgb(35, 35, 35);
+  background-color: transparent;
   color: rgb(251, 138, 81);
 }
 
 .deleteCardBtn:hover {
   background-color: rgb(66, 66, 66);
-}
-
-.add-card-div {
-  margin: 0 auto;
-  width: 80%;
 }
 
 .addNewCardLink {
@@ -51,6 +42,7 @@
 .cardBtnContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 16px 0px 24px 0px;
 }
 

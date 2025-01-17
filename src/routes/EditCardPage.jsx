@@ -42,19 +42,21 @@ function EditCardPage() {
 
   return (
     <main>
-      <button id='activateBtn' onClick={handleActivate}>
-        Activate Card
-      </button>
-      <button
-        id='deleteBtn'
-        onClick={() => {
-          handleDelete();
-        }}
-      >
-        Delete Card
-      </button>
-      <h2>Edit card</h2>
-      <CardForm initialCardData={cardData} onSubmit={handleUpdateCard} />
+      <div className='edit-card-container'>
+        <button id='activateBtn' onClick={handleActivate}>
+          Activate Card
+        </button>
+        <button
+          id='deleteBtn'
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          Delete Card
+        </button>
+        <h2>Edit card</h2>
+        <CardForm initialCardData={cardData} onSubmit={handleUpdateCard} />
+      </div>
     </main>
   );
 }
