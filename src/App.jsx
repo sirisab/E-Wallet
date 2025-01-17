@@ -10,14 +10,12 @@ import StartPage from './routes/StartPage';
 import AddCardPage from './routes/AddCardPage';
 import Root from './routes/Root';
 import EditCardPage from './routes/EditCardPage';
-import SettingsPage from './routes/SettingsPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Root />}>
       <Route index element={<StartPage />} />
       <Route path='addcard' element={<AddCardPage />} />
-      <Route path='settings' element={<SettingsPage />} />
       <Route path='card/:cardId' element={<EditCardPage />} />
     </Route>
   )

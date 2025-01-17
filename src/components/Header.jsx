@@ -5,15 +5,10 @@ export const Header = () => {
   return (
     <header>
       <IoSettingsSharp className='hidden' size='1.3em' />
-
       <Link to='/'>
         <h1>E-Wallet</h1>
-      </Link>
-
-      <Link to='/settings'>
-        {' '}
-        <IoSettingsSharp color='white' size='1.3em' />
-      </Link>
+      </Link>{' '}
+      <IoSettingsSharp color='white' size='1.3em' />
     </header>
   );
 };
